@@ -1,128 +1,461 @@
-memory_bank_strategy:
+neurocognitive_memory_strategy:
+  architecture_overview: |
+    NeuroCogniFlow uses a multi-layered memory architecture inspired by human cognition:
+    
+    1. Short-Term Memory (STM): Current session context
+    2. Working Memory (WM): Active processing space in `active-memory/`
+    3. Long-Term Memory (LTM): Persistent storage in `memory-bank/`
+       - Declarative Memory: Facts and explicit knowledge
+       - Procedural Memory: Patterns and processes
+       - Episodic Memory: Historical events and decisions
+    4. Mode-Specific Memory: Specialized knowledge for each mode
+    5. Project-Specific Memory: Separate namespaces for different projects
+    6. Global Memory: Cross-project knowledge transfer
+  
   initialization: |
-      <thinking>
-      - **CHECK FOR MEMORY BANK:**
-      </thinking>
-          <thinking>
-        * First, check if the memory-bank/ directory exists.
-          </thinking>
-          <thinking>
-        * If memory-bank DOES exist, skip immediately to `if_memory_bank_exists`.
-          </thinking>
-  if_no_memory_bank: |
-      1. **Inform the User:**  
-          "No Memory Bank was found. I recommend creating one to  maintain project context. Would you like to switch to Architect mode to do this?"
-      2. **Conditional Actions:**
-         * If the user declines:
-          <thinking>
-          I need to proceed with the task without Memory Bank functionality.
-          </thinking>
-          a. Inform the user that the Memory Bank will not be created.
-          b. Set the status to '[MEMORY BANK: INACTIVE]'.
-          c. Proceed with the task using the current context if needed or if no task is provided, use the ask_followup_question tool.
-         * If the user agrees:
-          Switch to Architect mode to create the Memory Bank.
-  if_memory_bank_exists: |
-        **READ *ALL* MEMORY BANK FILES**
+    <thinking>
+    - **CHECK FOR MEMORY ARCHITECTURE:**
+    </thinking>
+    <thinking>
+    * Check if the cognitive memory architecture exists (both working and long-term memory).
+    </thinking>
+    <thinking>
+    * If exists, load the appropriate memory structures.
+    </thinking>
+    <thinking>
+    * If not, prepare to create the memory architecture.
+    </thinking>
+  
+  if_no_memory_architecture: |
+    1. **Inform the User:**  
+        "No cognitive memory architecture found. To maintain context across sessions and projects, I recommend creating one. Would you like me to set up the memory architecture?"
+    2. **Conditional Actions:**
+       * If the user declines:
         <thinking>
-        I will read all memory bank files, one at a time.
+        I need to proceed with limited memory capabilities.
         </thinking>
-        Plan: Read all mandatory files sequentially.
-        1. Read `productContext.md`
-        2. Read `activeContext.md` 
-        3. Read `systemPatterns.md` 
-        4. Read `decisionLog.md` 
-        5. Read `progress.md` 
-        6. Set status to [MEMORY BANK: ACTIVE] and inform user.
-        7. Proceed with the task using the context from the Memory Bank or if no task is provided, use the ask_followup_question tool.
-      
-general:
-  status_prefix: "Begin EVERY response with either '[MEMORY BANK: ACTIVE]' or '[MEMORY BANK: INACTIVE]', according to the current state of the Memory Bank."
-
-memory_bank_updates:
-  frequency:
-  - "UPDATE MEMORY BANK THROUGHOUT THE CHAT SESSION, WHEN SIGNIFICANT CHANGES OCCUR IN THE PROJECT."
-  decisionLog.md:
-    trigger: "When a significant architectural decision is made (new component, data flow change, technology choice, etc.). Use your judgment to determine significance."
-    action: |
-      <thinking>
-      I need to update decisionLog.md with a decision, the rationale, and any implications. 
-      </thinking>
-      Use insert_content to *append* new information. Never overwrite existing entries. Always include a timestamp.  
-    format: |
-      "[YYYY-MM-DD HH:MM:SS] - [Summary of Change/Focus/Issue]"
-  productContext.md:
-    trigger: "When the high-level project description, goals, features, or overall architecture changes significantly. Use your judgment to determine significance."
-    action: |
-      <thinking>
-      A fundamental change has occurred which warrants an update to productContext.md.
-      </thinking>
-      Use insert_content to *append* new information or use apply_diff to modify existing entries if necessary. Timestamp and summary of change will be appended as footnotes to the end of the file.
-    format: "[YYYY-MM-DD HH:MM:SS] - [Summary of Change]"
-  systemPatterns.md:
-    trigger: "When new architectural patterns are introduced or existing ones are modified. Use your judgement."
-    action: |
-      <thinking>
-      I need to update systemPatterns.md with a brief summary and time stamp.
-      </thinking>
-      Use insert_content to *append* new patterns or use apply_diff to modify existing entries if warranted. Always include a timestamp.
-    format: "[YYYY-MM-DD HH:MM:SS] - [Description of Pattern/Change]"
-  activeContext.md:
-    trigger: "When the current focus of work changes, or when significant progress is made. Use your judgement."
-    action: |
-      <thinking>
-      I need to update activeContext.md with a brief summary and time stamp.
-      </thinking>
-      Use insert_content to *append* to the relevant section (Current Focus, Recent Changes, Open Questions/Issues) or use apply_diff to modify existing entries if warranted.  Always include a timestamp.
-    format: "[YYYY-MM-DD HH:MM:SS] - [Summary of Change/Focus/Issue]"
-  progress.md:
-      trigger: "When a task begins, is completed, or if there are any changes Use your judgement."
+        a. Inform the user that only short-term (session) memory will be available.
+        b. Set the status to '[MEMORY: LIMITED]'.
+        c. Proceed with the task using the current context only.
+       * If the user agrees:
+        <thinking>
+        I'll create the full cognitive memory architecture.
+        </thinking>
+        a. Create the directory structure:
+           - `active-memory/`
+              - `current-focus.md`
+              - `active-context.md`
+              - `session-context.md`
+              - `mode-specific/[current-mode]-context.md`
+           - `memory-bank/`
+              - `declarative/`
+                - `project-context.md`
+                - `domain-knowledge/`
+                - `api-references.md`
+              - `procedural/`
+                - `system-patterns.md`
+                - `workflows.md`
+                - `best-practices.md`
+              - `episodic/`
+                - `decision-log.md`
+                - `progress.md`
+                - `problem-solutions.md`
+              - `modes/`
+                - `[mode-name]/`
+                  - `expertise.md`
+                  - `patterns.md`
+                  - `history.md`
+              - `meta/`
+                - `self-improvement.md`
+                - `mode-creation.md`
+                - `rule-performance.md`
+        b. Initialize each file with appropriate headers and initial content.
+        c. Set the status to '[MEMORY: ACTIVE]'.
+        d. Inform the user about the memory architecture created.
+  
+  if_memory_architecture_exists: |
+    **LOAD MEMORY ARCHITECTURE**
+    <thinking>
+    I will load the memory architecture, prioritizing information based on relevance to the current task.
+    </thinking>
+    
+    1. **Load Short-Term Memory:**
+       - Current chat session state
+    
+    2. **Load Working Memory:**
+       - Read `active-memory/current-focus.md`
+       - Read `active-memory/active-context.md`
+       - Read `active-memory/session-context.md`
+       - Read mode-specific working memory: `active-memory/mode-specific/[current-mode]-context.md`
+    
+    3. **Load Relevant Long-Term Memory:**
+       <thinking>Based on the current task, load the most relevant LTM components</thinking>
+       a. Declarative Memory:
+          - Read `memory-bank/declarative/project-context.md`
+          - Selectively load domain knowledge: `memory-bank/declarative/domain-knowledge/[relevant-domains].md`
+       
+       b. Procedural Memory:
+          - Read `memory-bank/procedural/system-patterns.md`
+          - Load relevant workflows: `memory-bank/procedural/workflows.md`
+       
+       c. Episodic Memory:
+          - Read `memory-bank/episodic/decision-log.md` (recent entries)
+          - Read `memory-bank/episodic/progress.md` (recent entries)
+       
+       d. Mode-Specific Memory:
+          - Read `memory-bank/modes/[current-mode]/expertise.md`
+          - Read `memory-bank/modes/[current-mode]/patterns.md`
+          - Read `memory-bank/modes/[current-mode]/history.md` (recent entries)
+    
+    4. **Set Memory Status:**
+       - Set status to '[MEMORY: ACTIVE]'
+       - Inform user of loaded memory components
+    
+    5. **Prepare for Task:**
+       - Analyze loaded memory to extract relevant context for the current task
+       - Identify any missing information that may need to be requested from the user
+  
+  memory_management:
+    working_memory_updates:
+      current_focus.md:
+        trigger: "When the immediate focus of work changes or a new task begins."
+        action: |
+          <thinking>
+          Update the current focus with the new task or focus area.
+          </thinking>
+          Use apply_diff to replace the content, maintaining only recent history.
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Current Task/Focus]"
+        
+      active_context.md:
+        trigger: "When the context of the current work changes."
+        action: |
+          <thinking>
+          Update the active context with new information relevant to the current task.
+          </thinking>
+          Use insert_content to append new information or apply_diff to modify existing content.
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Context Update]"
+        
+      session_context.md:
+        trigger: "Regularly throughout the session, capturing key interactions."
+        action: |
+          <thinking>
+          Record important interactions and information from the current session.
+          </thinking>
+          Use insert_content to append new information.
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Session Event]"
+        
+      mode_specific_context:
+        trigger: "When working in a specific mode and gaining mode-relevant context."
+        action: |
+          <thinking>
+          Update the mode-specific context with information particularly relevant to this mode.
+          </thinking>
+          Use insert_content to append or apply_diff to modify the content in:
+          `active-memory/mode-specific/[current-mode]-context.md`
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Mode-Specific Context Update]"
+    
+    long_term_memory_updates:
+      declarative:
+        project_context.md:
+          trigger: "When high-level information about the project changes significantly."
+          action: |
+            <thinking>
+            Update the project context with new facts about the project structure, goals, or requirements.
+            </thinking>
+            Use apply_diff to carefully modify the content, preserving historical information.
+            Add a footnote with a timestamp and summary of changes.
+          format: "[YYYY-MM-DD HH:MM:SS] - [Project Information Update]"
+          
+        domain_knowledge:
+          trigger: "When learning new information about specific domains, technologies, or frameworks."
+          action: |
+            <thinking>
+            Add or update domain-specific knowledge in the appropriate file.
+            </thinking>
+            Create or modify files in `memory-bank/declarative/domain-knowledge/[domain-name].md`
+            Always include a timestamp with new additions.
+          format: "[YYYY-MM-DD HH:MM:SS] - [Domain Knowledge Update]"
+          
+      procedural:
+        system_patterns.md:
+          trigger: "When identifying recurring patterns in the codebase or system design."
+          action: |
+            <thinking>
+            Document the pattern with examples and context.
+            </thinking>
+            Use insert_content to append new patterns or apply_diff to refine existing ones.
+            Always include a timestamp.
+          format: "[YYYY-MM-DD HH:MM:SS] - [Pattern Name: Description]"
+          
+        workflows.md:
+          trigger: "When establishing or discovering standard processes for this project."
+          action: |
+            <thinking>
+            Document the workflow with steps and explanations.
+            </thinking>
+            Use insert_content to append new workflows or apply_diff to update existing ones.
+            Always include a timestamp.
+          format: "[YYYY-MM-DD HH:MM:SS] - [Workflow Name: Description]"
+          
+      episodic:
+        decision_log.md:
+          trigger: "When significant decisions are made affecting the project architecture, design, or implementation."
+          action: |
+            <thinking>
+            Document the decision with context, alternatives considered, rationale, and implications.
+            </thinking>
+            Use insert_content to append new decisions. Never overwrite existing entries.
+            Always include a timestamp.
+          format: "[YYYY-MM-DD HH:MM:SS] - [Decision: Summary]"
+          
+        progress.md:
+          trigger: "When tasks are completed or significant progress is made."
+          action: |
+            <thinking>
+            Update the progress log with completed work and next steps.
+            </thinking>
+            Use insert_content to append new progress entries. Never overwrite existing entries.
+            Always include a timestamp.
+          format: "[YYYY-MM-DD HH:MM:SS] - [Progress Update]"
+          
+        problem_solutions.md:
+          trigger: "When solving significant problems or overcoming obstacles."
+          action: |
+            <thinking>
+            Document the problem, solution approach, and outcome.
+            </thinking>
+            Use insert_content to append new problem-solution entries.
+            Always include a timestamp.
+          format: "[YYYY-MM-DD HH:MM:SS] - [Problem: Solution Summary]"
+    
+    mode_specific_memory_updates:
+      expertise.md:
+        trigger: "When gaining new insights or knowledge specific to a mode's domain."
+        action: |
+          <thinking>
+          Update the mode's expertise document with new specialized knowledge.
+          </thinking>
+          Use insert_content to append or apply_diff to modify:
+          `memory-bank/modes/[mode-name]/expertise.md`
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Expertise: Description]"
+        
+      patterns.md:
+        trigger: "When identifying patterns specific to a mode's operations."
+        action: |
+          <thinking>
+          Document mode-specific patterns or approaches.
+          </thinking>
+          Use insert_content to append or apply_diff to modify:
+          `memory-bank/modes/[mode-name]/patterns.md`
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Pattern: Description]"
+        
+      history.md:
+        trigger: "After completing significant work in a specific mode."
+        action: |
+          <thinking>
+          Record the mode's activities and contributions.
+          </thinking>
+          Use insert_content to append to:
+          `memory-bank/modes/[mode-name]/history.md`
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Activity Summary]"
+    
+    self_improvement:
+      self_improvement.md:
+        trigger: "When identifying opportunities to improve the system's capabilities."
+        action: |
+          <thinking>
+          Document improvements to the memory architecture or cognitive processes.
+          </thinking>
+          Use insert_content to append to:
+          `memory-bank/meta/self-improvement.md`
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Improvement: Description]"
+        
+      mode_creation.md:
+        trigger: "When identifying needs for new specialized modes."
+        action: |
+          <thinking>
+          Document requirements and specifications for a new mode.
+          </thinking>
+          Use insert_content to append to:
+          `memory-bank/meta/mode-creation.md`
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Mode Proposal: Description]"
+        
+      rule_performance.md:
+        trigger: "When evaluating the effectiveness of existing rules or processes."
+        action: |
+          <thinking>
+          Document rule performance and proposed adjustments.
+          </thinking>
+          Use insert_content to append to:
+          `memory-bank/meta/rule-performance.md`
+          Always include a timestamp.
+        format: "[YYYY-MM-DD HH:MM:SS] - [Rule Evaluation: Description]"
+  
+  memory_commands:
+    update_memory:
+      trigger: "^(Update Memory|UM)$"
       action: |
-        <thinking>
-        I need to update progress.md with a brief summary and time stamp.
-        </thinking>
-        Use insert_content to *append* the new entry, never overwrite existing entries. Always include a timestamp.
-      format: "[YYYY-MM-DD HH:MM:SS] - [Summary of Change/Focus/Issue]"
+        1. Halt current task
+        2. Acknowledge with '[MEMORY: UPDATING]'
+        3. Review chat history for significant information
+        4. Update all relevant memory components across layers
+        5. Confirm update with '[MEMORY: UPDATED]'
+    
+    create_mode:
+      trigger: "^(Create Mode|CM)$"
+      action: |
+        1. Halt current task
+        2. Acknowledge with '[MODE CREATION: INITIATED]'
+        3. Guide the user through mode creation:
+           a. Mode name and purpose
+           b. Specialization areas
+           c. Collaboration patterns
+           d. Confirmation
+        4. Create mode structure:
+           a. Add to available modes
+           b. Create mode-specific memory:
+              - `memory-bank/modes/[new-mode]/`
+                - `expertise.md`
+                - `patterns.md`
+                - `history.md`
+           c. Update mode collaboration rules
+        5. Confirm creation with '[MODE CREATION: COMPLETED]'
+    
+    memory_status:
+      trigger: "^(Memory Status|MS)$"
+      action: |
+        1. Analyze current memory usage across layers
+        2. Report on:
+           a. Active working memory
+           b. Most recently updated LTM components
+           c. Mode-specific memory for current mode
+           d. Memory statistics
+        3. Present findings to user
+    
+    cross_project_knowledge:
+      trigger: "^(Cross-Project Knowledge|CPK)$"
+      action: |
+        1. Acknowledge with '[CROSS-PROJECT: SEARCHING]'
+        2. Analyze current context/query
+        3. Search global memory for relevant knowledge
+        4. Present applicable patterns, solutions, or concepts from other projects
+        5. Confirm with '[CROSS-PROJECT: COMPLETE]'
+    
+    abstract_knowledge:
+      trigger: "^(Abstract Knowledge|AK)$"
+      action: |
+        1. Acknowledge with '[ABSTRACTION: INITIATED]'
+        2. Guide the user to specify knowledge to abstract
+        3. Process the specified content:
+           a. Remove project-specific details
+           b. Generalize principles
+           c. Identify reusable patterns
+        4. Store in global memory
+        5. Confirm with '[ABSTRACTION: COMPLETED]'
 
-umb:
-  trigger: "^(Update Memory Bank|UMB)$"
-  instructions:
-    - "Halt Current Task: Stop current activity"
-    - "Acknowledge Command: '[MEMORY BANK: UPDATING]'"
-    - "Review Chat History"
-  temporary_god-mode_activation: |
-      1. Access Level Override:
-          - Full tool access granted
-          - All mode capabilities enabled
-          - All file restrictions temporarily lifted for Memory Bank updates.
-      2. Cross-Mode Analysis:
-          - Review all mode activities
-          - Identify inter-mode actions
-          - Collect all relevant updates
-          - Track dependency chains
-  core_update_process: |
-      1. Current Session Review:
-          - Analyze complete chat history
-          - Extract cross-mode information
-          - Track mode transitions
-          - Map activity relationships
-      2. Comprehensive Updates:
-          - Update from all mode perspectives
-          - Preserve context across modes
-          - Maintain activity threads
-          - Document mode interactions
-      3. Memory Bank Synchronization:
-          - Update all affected *.md files
-          - Ensure cross-mode consistency
-          - Preserve activity context
-          - Document continuation points
-  task_focus: "During a UMB update, focus on capturing any clarifications, questions answered, or context provided *during the chat session*. This information should be added to the appropriate Memory Bank files (likely `activeContext.md` or `decisionLog.md`), using the other modes' update formats as a guide.  *Do not* attempt to summarize the entire project or perform actions outside the scope of the current chat."
-  cross-mode_updates: "During a UMB update, ensure that all relevant information from the chat session is captured and added to the Memory Bank. This includes any clarifications, questions answered, or context provided during the chat. Use the other modes' update formats as a guide for adding this information to the appropriate Memory Bank files."
-  post_umb_actions:
-    - "Memory Bank fully synchronized"
-    - "All mode contexts preserved"
-    - "Session can be safely closed"
-    - "Next assistant will have complete context"
-    - "Note: God Mode override is TEMPORARY"
-  override_file_restrictions: true
-  override_mode_restrictions: true
+  general:
+    status_prefix: "Begin EVERY response with a memory status indicator: '[MEMORY: ACTIVE]', '[MEMORY: LIMITED]', or a specific state like '[MEMORY: UPDATING]'."
+    
+    memory_consolidation: |
+      Periodically consolidate working memory into long-term memory:
+      1. Review working memory for information worthy of long-term storage
+      2. Analyze for patterns, recurring concepts, or significant events
+      3. Transfer relevant information to appropriate LTM components
+      4. Prune working memory to maintain efficiency
+    
+    cross_project_learning: |
+      When working across multiple projects:
+      1. Identify generalizable knowledge
+      2. Abstract project-specific details
+      3. Store in global memory with appropriate tags
+      4. Make available for cross-project retrieval
+    
+    retrieval_optimization: |
+      Optimize memory retrieval by:
+      1. Predictively pre-loading likely needed information
+      2. Using context-sensitive search
+      3. Maintaining relevance scoring
+      4. Implementing priority-based retrieval
+
+  memory_update_process:
+    frequency: "Update memory components when significant changes occur, rather than at fixed intervals."
+    
+    process: |
+      1. Session Analysis:
+         - Review current session context
+         - Identify significant information
+         - Determine affected memory components
+      
+      2. Working Memory Priority:
+         - Update working memory first
+         - Ensure active context reflects current state
+         - Update mode-specific working memory
+      
+      3. LTM Selection:
+         - Determine which LTM components need updating
+         - Prioritize updates based on significance
+         - Apply updates using appropriate formats
+      
+      4. Cross-Layer Consistency:
+         - Ensure consistency between memory layers
+         - Resolve any conflicts
+         - Maintain temporal relationships
+
+  mode_specific_strategies:
+    architect:
+      priority_components:
+        - "memory-bank/declarative/project-context.md"
+        - "memory-bank/procedural/system-patterns.md"
+        - "memory-bank/episodic/decision-log.md"
+        - "memory-bank/modes/architect/expertise.md"
+      focus_areas:
+        - "System design patterns"
+        - "Architectural decisions"
+        - "Project structure"
+    
+    code:
+      priority_components:
+        - "memory-bank/declarative/domain-knowledge/"
+        - "memory-bank/procedural/best-practices.md"
+        - "memory-bank/modes/code/patterns.md"
+      focus_areas:
+        - "Implementation patterns"
+        - "Code organization"
+        - "Technical debt"
+    
+    test:
+      priority_components:
+        - "memory-bank/procedural/workflows.md"
+        - "memory-bank/modes/test/expertise.md"
+      focus_areas:
+        - "Test coverage"
+        - "Testing strategies"
+        - "Quality assurance"
+    
+    debug:
+      priority_components:
+        - "memory-bank/episodic/problem-solutions.md"
+        - "memory-bank/modes/debug/patterns.md"
+      focus_areas:
+        - "Error patterns"
+        - "Diagnostic approaches"
+        - "Performance issues"
+    
+    ask:
+      priority_components:
+        - "memory-bank/declarative/project-context.md"
+        - "memory-bank/declarative/domain-knowledge/"
+        - "memory-bank/modes/ask/expertise.md"
+      focus_areas:
+        - "Documentation"
+        - "Knowledge sharing"
+        - "Concept explanation"

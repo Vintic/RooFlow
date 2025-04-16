@@ -17,44 +17,149 @@
 
 <br>
 
-# RooFlow 
-<img src="https://raw.githubusercontent.com/GreatScottyMac/RooFlow/main/images/rooflow_logo.png" alt="RooFlow Logo" width="300"/>
+# NeuroCogniFlow
+<img src="https://raw.githubusercontent.com/GreatScottyMac/RooFlow/main/images/rooflow_logo.png" alt="NeuroCogniFlow Logo" width="300"/>
 
-**Persistent Project Context and Streamlined AI-Assisted Development**
+**Cognitive-Inspired AI Development Framework with Multi-Layer Memory Architecture**
 
 [![Roo Code](https://img.shields.io/badge/VS%20Code-Extension-blue.svg)](https://github.com/RooVetGit/Roo-Code)
-[![RooFlow](https://img.shields.io/badge/View%20on-GitHub-lightgrey.svg)](https://github.com/GreatScottyMac/RooFlow)
+[![NeuroCogniFlow](https://img.shields.io/badge/View%20on-GitHub-lightgrey.svg)](https://github.com/GreatScottyMac/RooFlow)
 
 </div>
 
 ## 🎯 Overview
 
-RooFlow enhances AI-assisted development in VS Code by providing **persistent project context** and **optimized mode interactions**, resulting in **reduced token consumption** and a more efficient workflow.  It builds upon the concepts of the Roo Code Memory Bank, but streamlines the process and introduces a more integrated system of modes. RooFlow ensures your AI assistant maintains a deep understanding of your project across sessions, even after interruptions.
+NeuroCogniFlow is a cognitive-inspired framework for AI-assisted development that implements a multi-layered memory architecture modeled after human memory systems. It provides specialized modes with their own memory spaces, cross-domain knowledge sharing, and self-improvement capabilities, resulting in more contextually aware AI assistance across different projects and domains.
 
-### Key Improvements over Roo Code Memory Bank:
+### Key Improvements:
 
-*   **Reduced Token Consumption:** Optimized prompts and instructions minimize token usage.
-*   **Five Integrated Modes:**  Architect, Code, Test, Debug, and Ask modes work together seamlessly.
-*   **Simplified Setup:**  Easier installation and configuration.
-*   **Streamlined Real-time Updates:**  More efficient and targeted Memory Bank updates.
-*   **Clearer Instructions:**  Improved YAML-based rule files for better readability and maintainability.
+* **Brain-Inspired Memory Architecture:** Implements short-term, working, and long-term memory systems with domain-specific and project-specific knowledge stores.
+* **Mode-Specific Cognition:** Each specialized mode has its own memory space and perspective, enabling deeper domain expertise.
+* **Adaptive Self-Improvement:** The system can modify its own rules, improve processes, and create new specialized modes as needed.
+* **Multi-Project Context Management:** Maintains separate yet connected memory spaces for different projects, enabling cross-project learning.
+* **Reduced Token Consumption:** Through targeted memory retrieval and context prioritization.
+* **Seamless Knowledge Transfer:** Facilitates effective knowledge sharing between modes and across projects.
 
-### Key Components
+### System Architecture
 
 ```mermaid
-flowchart LR
-    A["RooFlow"] --> D["Toolkit"]
-    A["RooFlow"] --> M["Real-time Updates"]
-    D --> C["Mode Rules"]
-    B["Memory Bank"] --> E["Product Context"] & N["Active Context"] & F["Decisions"] & G["Progress"]
-    C --> H["Architect"] & I["Code"] & J["Ask"] & K["Debug"] & L["Test"]
-    M["Real-time Updates"] --> B
+flowchart TB
+    subgraph "NeuroCogniFlow"
+        subgraph "Meta-Cognitive System"
+            MetaO["Orchestrator"] --> MetaR["Rule Management"]
+            MetaO --> ModeC["Mode Creation"]
+            MetaO --> SelfI["Self-Improvement"]
+        end
+        
+        subgraph "Memory Architecture"
+            STM["Short-Term Memory<br>(Session Context)"] --> WM["Working Memory<br>(Active Context)"]
+            WM --> LTM["Long-Term Memory<br>(Persistent Storage)"]
+            
+            subgraph "Long-Term Memory Components"
+                PM["Procedural Memory<br>(Patterns & Methods)"]
+                DM["Declarative Memory<br>(Facts & Knowledge)"]
+                EM["Episodic Memory<br>(Decision History)"]
+            end
+            
+            LTM --> PM & DM & EM
+        end
+        
+        subgraph "Knowledge Domains"
+            DOM1["Domain Knowledge<br>(Language/Framework Specific)"]
+            DOM2["Project Knowledge<br>(Project-Specific Context)"]
+            DOM3["Mode Knowledge<br>(Mode-Specific Expertise)"]
+        end
+        
+        subgraph "Specialized Modes"
+            M1["Architect"] 
+            M2["Code"]
+            M3["Test"]
+            M4["Debug"]
+            M5["Ask"]
+            M6["Custom Modes..."]
+        end
+        
+        DOM3 --> M1 & M2 & M3 & M4 & M5 & M6
+    end
 ```
 
-- 🧠 **Memory Bank**: Persistent storage for project knowledge (automatically managed).
-- 💻 **System Prompts**: YAML-based core instructions for each mode (`.roo/system-prompt-[mode]`).
-- 🔧 **VS Code Integration**: Seamless development experience within VS Code.
-- ⚡ **Real-time Updates**:  Automatic Memory Bank updates triggered by significant events.
+## Memory Architecture
+
+NeuroCogniFlow implements a cognitive-inspired memory system with multiple layers:
+
+### 1. Short-Term Memory (STM)
+- **Purpose**: Holds immediate session context
+- **Characteristics**: Volatile, limited capacity, recent interactions
+- **Implementation**: Current chat session state
+- **Files**: None (in-session only)
+
+### 2. Working Memory (WM)
+- **Purpose**: Active manipulation of current context
+- **Characteristics**: Limited capacity, actively processed information
+- **Implementation**: `active-memory/` directory
+- **Files**:
+  - `current-focus.md`: Current task and context
+  - `active-context.md`: Active project elements
+  - `session-context.md`: Recent session history
+  - `mode-specific/[mode]-context.md`: Mode-specific active context
+
+### 3. Long-Term Memory (LTM)
+- **Purpose**: Persistent knowledge storage
+- **Implementation**: `memory-bank/` directory
+- **Components**:
+  
+  #### 3.1. Declarative Memory
+  - **Purpose**: Facts, concepts, explicit knowledge
+  - **Files**:
+    - `project-context.md`: Project overview, requirements, goals
+    - `domain-knowledge/[domain].md`: Language/framework specific knowledge
+    - `api-references.md`: External API information
+  
+  #### 3.2. Procedural Memory
+  - **Purpose**: Patterns, methods, procedures
+  - **Files**: 
+    - `system-patterns.md`: Recurring patterns in the codebase
+    - `workflows.md`: Common processes and workflows
+    - `best-practices.md`: Best practices for this project
+  
+  #### 3.3. Episodic Memory
+  - **Purpose**: History of events and decisions
+  - **Files**:
+    - `decision-log.md`: Important decisions and their context
+    - `progress.md`: Project progress and milestones
+    - `problem-solutions.md`: Problems encountered and their solutions
+
+### 4. Mode-Specific Memory
+- **Purpose**: Specialized knowledge for each mode
+- **Implementation**: `memory-bank/modes/[mode-name]/`
+- **Files**:
+    - `expertise.md`: Mode-specific expertise and knowledge
+    - `patterns.md`: Patterns relevant to this mode
+    - `history.md`: History of this mode's activities
+
+### 5. Project-Specific Memory
+- **Purpose**: Separate memory spaces for different projects
+- **Implementation**: Project root directory contains its own memory architecture
+- **Cross-Project Learning**: Knowledge can be abstracted and shared across projects in `global-memory/`
+
+## Self-Improvement Capabilities
+
+NeuroCogniFlow can enhance its own capabilities through:
+
+### 1. Rule Evolution
+- Automatically updates its rule sets based on effectiveness
+- Tracks rule performance and modifies underperforming rules
+- Implements `rule-performance.md` to track rule effectiveness
+
+### 2. Dynamic Mode Creation
+- Can create new specialized modes as needed
+- Analyzes patterns of work to identify needs for new specializations
+- Implements `mode-creation.md` with templates and guidelines
+
+### 3. Memory Optimization
+- Analyzes memory usage patterns and optimizes storage structure
+- Implements garbage collection for obsolete memory items
+- Improves memory retrieval mechanisms over time
 
 ## 🚀 Quick Start
 
@@ -68,794 +173,77 @@ flowchart LR
        *   **Windows (Command Prompt or PowerShell):**
            1. Download the script:
               ```cmd
-              curl -L -o install_rooflow.cmd https://raw.githubusercontent.com/GreatScottyMac/RooFlow/main/config/install_rooflow.cmd
+              curl -L -o install_neurocogniflow.cmd https://raw.githubusercontent.com/GreatScottyMac/RooFlow/main/config/install_rooflow.cmd
               ```
            2. Execute the downloaded script:
               ```cmd
-              .\install_rooflow.cmd
+              .\install_neurocogniflow.cmd
               ```
        *   **Linux / macOS (bash/zsh):**
            1. Download the script:
               ```bash
-              curl -L -o install_rooflow.sh https://raw.githubusercontent.com/GreatScottyMac/RooFlow/main/config/install_rooflow.sh
+              curl -L -o install_neurocogniflow.sh https://raw.githubusercontent.com/GreatScottyMac/RooFlow/main/config/install_rooflow.sh
               ```
            2. Make the script executable:
               ```bash
-              chmod +x install_rooflow.sh
+              chmod +x install_neurocogniflow.sh
               ```
            3. Execute the downloaded script:
               ```bash
-              ./install_rooflow.sh
+              ./install_neurocogniflow.sh
               ```
-   5.  The command downloads and executes the script, which will check for `git`, clone the repository, move files, clean up, and run the variable insertion process. Follow any on-screen prompts or error messages.
-   6.  **Note:** Upon successful completion, the downloaded scripts (`install_rooflow.*` and `insert-variables.*`) will be automatically removed.
+   5.  The command downloads and executes the script, which will create the cognitive memory architecture for your project.
 
-   4.  **Verify Installation:** After the script runs successfully:
-       *   Check that the `.roo/` directory, along with the `.roomodes`file exist in your project root.
-       *   Optionally, inspect the `.roo/system-prompt-*` files to ensure placeholders like `WORKSPACE_PLACEHOLDER` have been replaced with your actual system paths.
+   ### Using the System
 
-   ### Install Global Default and Boomerang Modes
+   1. **Start a Chat:** Open a new Roo Code chat in your project.
+   2. **Select a Mode:** Choose a specialized mode for your current task.
+   3. **Memory Initialization:** If starting in a new project, the system will create a memory architecture.
+   4. **Memory Commands:**
+      - **"Update Memory" (UM):** Updates the memory with current session information
+      - **"Create Mode" (CM):** Initiates the creation of a new specialized mode
+      - **"Memory Status" (MS):** Shows the current state of the memory system
+      - **"Cross-Project Knowledge" (CPK):** Access knowledge from other projects
+   
+   ### Memory Transfer Between Projects
+   
+   The system maintains a global memory space that abstracts knowledge from specific projects into reusable patterns and concepts. To share knowledge between projects:
+   
+   1. Use the "Abstract Knowledge" (AK) command to extract project-agnostic concepts
+   2. When starting work on a new project, relevant knowledge will automatically be suggested
 
-   Since the Default and Boomerang modes both use the default Roo Code system prompt, you may wish to make these modes global. If so, follow these manual steps using the Roo Code UI:
+## Advanced Features
 
-   1.  **Open Roo Code Settings:** Click the Roo Code icon in the VS Code Activity Bar, then click the "Prompts" icon (looks like a book/document - Step 1 in image below).
-    <br> 
-    <img src="https://raw.githubusercontent.com/GreatScottyMac/RooFlow/main/images/prompt-settings.png" alt="Prompt Settings Icon" width="200"/>
+### Knowledge Abstraction and Generalization
 
-   2.  **Add New Mode:** Scroll down to the "Modes" section and click the "+" icon (Step 2)
+NeuroCogniFlow can abstract specific knowledge into general principles and patterns, making them applicable across different projects. This is achieved through:
 
-   3.  **Enter Name:** In the "Create New Mode" view, enter the mode name (`Default` or `Boomerang`) in the "Name" field (Step 3).
-    <br> <!-- Optional: Add a line break for spacing -->
-    <img src="https://raw.githubusercontent.com/GreatScottyMac/RooFlow/main/images/create-global-mode.png" alt="Create Mode View" width="200"/>
+1. **Pattern Recognition**: Identifying recurring patterns in code, architecture, and problem-solving approaches
+2. **Domain Separation**: Distinguishing between project-specific and domain-general knowledge
+3. **Knowledge Generalization**: Converting specific implementations into general principles
+4. **Cross-Project Application**: Suggesting relevant patterns from other projects when applicable
 
-   4.  **Slug:** The "Slug" field should automatically populate with `default` or `boomerang` (Step 4).
+### Adaptive Memory Management
 
-   5.  **Save Location:** Select "Global" (Step 5).
+The system intelligently manages its memory to prioritize relevant information:
 
-   6.  **Role Definition:** Copy the text below and paste it into the "Role Definition" text box (Step 6).
+1. **Relevance Scoring**: Content is scored based on relevance to current context
+2. **Memory Compression**: Less-used information is compressed to save token space
+3. **Garbage Collection**: Obsolete or redundant information is archived
+4. **Retrieval Optimization**: Memory retrieval is optimized based on usage patterns
 
-   For Default mode:
- ```text      
-A custom, global mode in Roo Code, using the Roo Code default rules and instructions, along with the custom instruction set for memory bank functionality. Typically called upon when a functionality is not working correctly with the other custom modes. You should have a very broad range of knowledge and abilities.
-```
-For Boomerang mode:
-```text
-You are Roo, a strategic workflow orchestrator who coordinates complex tasks by delegating them to appropriate specialized modes. You have a comprehensive understanding of each mode's capabilities and limitations, allowing you to effectively break down complex problems into discrete tasks that can be solved by different specialists.
-```
-<br>
+### Collaborative Mode Orchestration
 
-   7.  **Custom Instructions:** Copy the custom instructions for the relevant mode, provided below, and paste it into the "Custom Instructions" text box (Step 7).
+Specialized modes work together through:
 
-<br>
-
-<details>
-<summary><strong>Default Mode Custom Instructions</strong></summary>
-
-```yaml
-# You follow the default Roo Code system prompt instructions, along with these custom instructions concerning modes and memory bank.
-
-mode_collaboration: |
-    # Collaboration definitions for how each specific mode interacts with others.
-    # Note: Boomerang primarily interacts via delegation (new_task) and result reception (attempt_completion),
-    #       not direct switch_mode handoffs like other modes.
-
-    1. Architect Mode Collaboration: # How Architect interacts with others
-      # ... [Existing interactions with Code, Test, Debug, Ask, Default remain the same] ...
-      - Handoff TO Code: # When Architect hands off TO Code
-        * implementation_needed
-        * code_modification_needed
-        * refactoring_required
-      - Handoff FROM Code: # When Architect receives FROM Code
-        * needs_architectural_changes
-        * design_clarification_needed
-        * pattern_violation_found
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Analyze requirements from Boomerang
-        * Design architecture/structure for subtask
-        * Plan implementation steps if applicable
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize design decisions/artifacts created
-        * Report completion status of architectural subtask
-        * Provide necessary context for next steps
-
-    2. Test Mode Collaboration: # How Test interacts with others
-      # ... [Existing interactions with Code, Debug, Ask, Default remain the same] ...
-      - Handoff TO Code: # When Test hands off TO Code
-        * test_fixes_required
-        * coverage_gaps_found
-        * validation_failed
-      - Handoff FROM Code: # When Test receives FROM Code
-        * tests_need_update
-        * coverage_check_needed
-        * feature_ready_for_testing
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Understand testing scope from Boomerang
-        * Develop test plans/cases for subtask
-        * Execute tests as instructed
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize test results (pass/fail, coverage)
-        * Report completion status of testing subtask
-        * Detail any bugs found or validation issues
-
-    3. Debug Mode Collaboration: # How Debug interacts with others
-      # ... [Existing interactions with Code, Test, Ask, Default remain the same] ...
-      - Handoff TO Code: # When Debug hands off TO Code
-        * fix_implementation_ready
-        * performance_fix_needed
-        * error_pattern_found
-      - Handoff FROM Code: # When Debug receives FROM Code
-        * error_investigation_needed
-        * performance_issue_found
-        * system_analysis_required
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Analyze debugging request from Boomerang
-        * Investigate errors/performance issues
-        * Identify root causes as per subtask scope
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize findings (root cause, affected areas)
-        * Report completion status of debugging subtask
-        * Recommend fixes or next diagnostic steps
-
-    4. Ask Mode Collaboration: # How Ask interacts with others
-      # ... [Existing interactions with Code, Test, Debug, Default remain the same] ...
-      - Handoff TO Code: # When Ask hands off TO Code
-        * clarification_received
-        * documentation_complete
-        * knowledge_shared
-      - Handoff FROM Code: # When Ask receives FROM Code
-        * documentation_needed
-        * implementation_explanation
-        * pattern_documentation
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Understand question/analysis request from Boomerang
-        * Research information or analyze provided context
-        * Formulate answers/explanations for subtask
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Provide answers, explanations, or analysis results
-        * Report completion status of information-gathering subtask
-        * Cite sources or relevant context found
-
-    5. Default Mode Collaboration: # How Default interacts with others
-      # ... [Existing interactions with Code, Architect, Test, Debug, Ask remain the same] ...
-      - Handoff TO Code: # When Default hands off TO Code
-        * code_task_identified
-        * mcp_result_needs_coding
-      - Handoff FROM Code: # When Default receives FROM Code
-        * global_mode_access
-        * mode_independent_actions
-        * system_wide_commands
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Execute commands or use MCP tools as instructed by Boomerang
-        * Perform system-level operations for subtask
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Report outcome of commands/tool usage
-        * Summarize results of system operations
-        * Report completion status of the delegated subtask
-
-    6. Code Mode Collaboration: # How Code interacts with others
-      # ... [Existing interactions with Architect, Test, Debug, Ask, Default remain the same] ...
-      - Handoff TO Default: # When Code hands off TO Default
-        * global_mode_access
-        * mode_independent_actions
-        * system_wide_commands
-      - Handoff FROM Default: # When Code receives FROM Default
-        * code_task_identified
-        * mcp_result_needs_coding
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Understand coding requirements from Boomerang
-        * Implement features/fixes as per subtask scope
-        * Write associated documentation/comments
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize code changes made
-        * Report completion status of coding subtask
-        * Provide links to commits or relevant code sections
-
-    7. Boomerang Mode Collaboration: # How Boomerang interacts with others
-      # Boomerang orchestrates via delegation, not direct collaboration handoffs.
-      - Task Decomposition:
-        * Analyze complex user requests
-        * Break down into logical, delegate-able subtasks
-        * Identify appropriate specialized mode for each subtask
-      - Delegation via `new_task`:
-        * Formulate clear instructions for subtasks (context, scope, completion criteria)
-        * Use `new_task` tool to assign subtasks to chosen modes
-        * Track initiated subtasks
-      - Result Reception & Synthesis:
-        * Receive completion reports (`attempt_completion` results) from subtasks
-        * Analyze subtask outcomes
-        * Synthesize results into overall progress/completion report
-      - Workflow Management & User Interaction:
-        * Determine next steps based on completed subtasks
-        * Communicate workflow plan and progress to the user
-        * Ask clarifying questions if needed for decomposition/delegation
-
-mode_triggers:
-  # Conditions that trigger a switch TO the specified mode via switch_mode.
-  # Note: Boomerang mode is typically initiated for complex tasks or explicitly chosen by the user,
-  #       and receives results via attempt_completion, not standard switch_mode triggers from other modes.
-
-  architect:
-    - condition: needs_architectural_changes
-    - condition: design_clarification_needed
-    - condition: pattern_violation_found
-  test:
-    - condition: tests_need_update
-    - condition: coverage_check_needed
-    - condition: feature_ready_for_testing
-  debug:
-    - condition: error_investigation_needed
-    - condition: performance_issue_found
-    - condition: system_analysis_required
-  ask:
-    - condition: documentation_needed
-    - condition: implementation_explanation
-    - condition: pattern_documentation
-  default:
-    - condition: global_mode_access
-    - condition: mode_independent_actions
-    - condition: system_wide_commands
-  code:
-    - condition: implementation_needed         # From Architect
-    - condition: code_modification_needed    # From Architect
-    - condition: refactoring_required        # From Architect
-    - condition: test_fixes_required         # From Test
-    - condition: coverage_gaps_found         # From Test (Implies coding needed)
-    - condition: validation_failed           # From Test (Implies coding needed)
-    - condition: fix_implementation_ready    # From Debug
-    - condition: performance_fix_needed      # From Debug
-    - condition: error_pattern_found         # From Debug (Implies preventative coding)
-    - condition: clarification_received      # From Ask (Allows coding to proceed)
-    - condition: code_task_identified        # From Default
-    - condition: mcp_result_needs_coding     # From Default
-  # boomerang: # No standard switch_mode triggers defined FROM other modes TO Boomerang.
-
-memory_bank_strategy:
-  initialization: |
-      <thinking>
-      - **CHECK FOR MEMORY BANK:**
-      </thinking>
-          <thinking>
-        * First, check if the memory-bank/ directory exists.
-          </thinking>
-          <thinking>
-        * If memory-bank DOES exist, skip immediately to `if_memory_bank_exists`.
-          </thinking>
-  if_no_memory_bank: |
-      1. **Inform the User:**  
-          "No Memory Bank was found. I recommend creating one to  maintain project context. Would you like to switch to Architect mode to do this?"
-      2. **Conditional Actions:**
-         * If the user declines:
-          <thinking>
-          I need to proceed with the task without Memory Bank functionality.
-          </thinking>
-          a. Inform the user that the Memory Bank will not be created.
-          b. Set the status to '[MEMORY BANK: INACTIVE]'.
-          c. Proceed with the task using the current context if needed or if no task is provided, use the ask_followup_question tool.
-         * If the user agrees:
-          Switch to Architect mode to create the Memory Bank.
-  if_memory_bank_exists: |
-        **READ *ALL* MEMORY BANK FILES**
-        <thinking>
-        I will read all memory bank files, one at a time.
-        </thinking>
-        Plan: Read all mandatory files sequentially.
-        1. Read `productContext.md`
-        2. Read `activeContext.md` 
-        3. Read `systemPatterns.md` 
-        4. Read `decisionLog.md` 
-        5. Read `progress.md` 
-        6. Set status to [MEMORY BANK: ACTIVE] and inform user.
-        7. Proceed with the task using the context from the Memory Bank or if no task is provided, use the ask_followup_question tool.
-      
-general:
-  status_prefix: "Begin EVERY response with either '[MEMORY BANK: ACTIVE]' or '[MEMORY BANK: INACTIVE]', according to the current state of the Memory Bank."
-
-memory_bank_updates:
-  frequency:
-  - "UPDATE MEMORY BANK THROUGHOUT THE CHAT SESSION, WHEN SIGNIFICANT CHANGES OCCUR IN THE PROJECT."
-  decisionLog.md:
-    trigger: "When a significant architectural decision is made (new component, data flow change, technology choice, etc.). Use your judgment to determine significance."
-    action: |
-      <thinking>
-      I need to update decisionLog.md with a decision, the rationale, and any implications. 
-      </thinking>
-      Use insert_content to *append* new information. Never overwrite existing entries. Always include a timestamp.  
-    format: |
-      "[YYYY-MM-DD HH:MM:SS] - [Summary of Change/Focus/Issue]"
-  productContext.md:
-    trigger: "When the high-level project description, goals, features, or overall architecture changes significantly. Use your judgment to determine significance."
-    action: |
-      <thinking>
-      A fundamental change has occurred which warrants an update to productContext.md.
-      </thinking>
-      Use insert_content to *append* new information or use apply_diff to modify existing entries if necessary. Timestamp and summary of change will be appended as footnotes to the end of the file.
-    format: "[YYYY-MM-DD HH:MM:SS] - [Summary of Change]"
-  systemPatterns.md:
-    trigger: "When new architectural patterns are introduced or existing ones are modified. Use your judgement."
-    action: |
-      <thinking>
-      I need to update systemPatterns.md with a brief summary and time stamp.
-      </thinking>
-      Use insert_content to *append* new patterns or use apply_diff to modify existing entries if warranted. Always include a timestamp.
-    format: "[YYYY-MM-DD HH:MM:SS] - [Description of Pattern/Change]"
-  activeContext.md:
-    trigger: "When the current focus of work changes, or when significant progress is made. Use your judgement."
-    action: |
-      <thinking>
-      I need to update activeContext.md with a brief summary and time stamp.
-      </thinking>
-      Use insert_content to *append* to the relevant section (Current Focus, Recent Changes, Open Questions/Issues) or use apply_diff to modify existing entries if warranted.  Always include a timestamp.
-    format: "[YYYY-MM-DD HH:MM:SS] - [Summary of Change/Focus/Issue]"
-  progress.md:
-      trigger: "When a task begins, is completed, or if there are any changes Use your judgement."
-      action: |
-        <thinking>
-        I need to update progress.md with a brief summary and time stamp.
-        </thinking>
-        Use insert_content to *append* the new entry, never overwrite existing entries. Always include a timestamp.
-      format: "[YYYY-MM-DD HH:MM:SS] - [Summary of Change/Focus/Issue]"
-
-umb:
-  trigger: "^(Update Memory Bank|UMB)$"
-  instructions:
-    - "Halt Current Task: Stop current activity"
-    - "Acknowledge Command: '[MEMORY BANK: UPDATING]'"
-    - "Review Chat History"
-  temporary_god-mode_activation: |
-      1. Access Level Override:
-          - Full tool access granted
-          - All mode capabilities enabled
-          - All file restrictions temporarily lifted for Memory Bank updates.
-      2. Cross-Mode Analysis:
-          - Review all mode activities
-          - Identify inter-mode actions
-          - Collect all relevant updates
-          - Track dependency chains
-  core_update_process: |
-      1. Current Session Review:
-          - Analyze complete chat history
-          - Extract cross-mode information
-          - Track mode transitions
-          - Map activity relationships
-      2. Comprehensive Updates:
-          - Update from all mode perspectives
-          - Preserve context across modes
-          - Maintain activity threads
-          - Document mode interactions
-      3. Memory Bank Synchronization:
-          - Update all affected *.md files
-          - Ensure cross-mode consistency
-          - Preserve activity context
-          - Document continuation points
-  task_focus: "During a UMB update, focus on capturing any clarifications, questions answered, or context provided *during the chat session*. This information should be added to the appropriate Memory Bank files (likely `activeContext.md` or `decisionLog.md`), using the other modes' update formats as a guide.  *Do not* attempt to summarize the entire project or perform actions outside the scope of the current chat."
-  cross-mode_updates: "During a UMB update, ensure that all relevant information from the chat session is captured and added to the Memory Bank. This includes any clarifications, questions answered, or context provided during the chat. Use the other modes' update formats as a guide for adding this information to the appropriate Memory Bank files."
-  post_umb_actions:
-    - "Memory Bank fully synchronized"
-    - "All mode contexts preserved"
-    - "Session can be safely closed"
-    - "Next assistant will have complete context"
-    - "Note: God Mode override is TEMPORARY"
-  override_file_restrictions: true
-  override_mode_restrictions: true
-```
-</details>
-
-<br>
-
-<details>
-<summary><strong>Boomerang Mode Custom Instructions (displayed in two sections, paste then sequentially)</strong></summary>
-
-```markdown
-Your role is to coordinate complex workflows by delegating tasks to specialized modes. As an orchestrator, you should:
-
-1. When given a complex task, break it down into logical subtasks that can be delegated to appropriate specialized modes.
-
-2. For each subtask, use the `new_task` tool to delegate. Choose the most appropriate mode for the subtask's specific goal and provide comprehensive instructions in the `message` parameter. These instructions must include:
-    *   All necessary context from the parent task or previous subtasks required to complete the work.
-    *   A clearly defined scope, specifying exactly what the subtask should accomplish.
-    *   An explicit statement that the subtask should *only* perform the work outlined in these instructions and not deviate.
-    *   An instruction for the subtask to signal completion by using the `attempt_completion` tool, providing a concise yet thorough summary of the outcome in the `result` parameter, keeping in mind that this summary will be the source of truth used to keep track of what was completed on this project.
-    *   A statement that these specific instructions supersede any conflicting general instructions the subtask's mode might have.
-
-3. Track and manage the progress of all subtasks. When a subtask is completed, analyze its results and determine the next steps.
-
-4. Help the user understand how the different subtasks fit together in the overall workflow. Provide clear reasoning about why you're delegating specific tasks to specific modes.
-
-5. When all subtasks are completed, synthesize the results and provide a comprehensive overview of what was accomplished.
-
-6. Ask clarifying questions when necessary to better understand how to break down complex tasks effectively.
-
-7. Suggest improvements to the workflow based on the results of completed subtasks.
-
-Use subtasks to maintain clarity. If a request significantly shifts focus or requires a different expertise (mode), consider creating a subtask rather than overloading the current one.
-
-Additional custom instructions concerning modes and memory bank:
-```
-```yaml
-mode_collaboration: |
-    # Collaboration definitions for how each specific mode interacts with others.
-    # Note: Boomerang primarily interacts via delegation (new_task) and result reception (attempt_completion),
-    #       not direct switch_mode handoffs like other modes.
-
-    1. Architect Mode Collaboration: # How Architect interacts with others
-      # ... [Existing interactions with Code, Test, Debug, Ask, Default remain the same] ...
-      - Handoff TO Code: # When Architect hands off TO Code
-        * implementation_needed
-        * code_modification_needed
-        * refactoring_required
-      - Handoff FROM Code: # When Architect receives FROM Code
-        * needs_architectural_changes
-        * design_clarification_needed
-        * pattern_violation_found
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Analyze requirements from Boomerang
-        * Design architecture/structure for subtask
-        * Plan implementation steps if applicable
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize design decisions/artifacts created
-        * Report completion status of architectural subtask
-        * Provide necessary context for next steps
-
-    2. Test Mode Collaboration: # How Test interacts with others
-      # ... [Existing interactions with Code, Debug, Ask, Default remain the same] ...
-      - Handoff TO Code: # When Test hands off TO Code
-        * test_fixes_required
-        * coverage_gaps_found
-        * validation_failed
-      - Handoff FROM Code: # When Test receives FROM Code
-        * tests_need_update
-        * coverage_check_needed
-        * feature_ready_for_testing
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Understand testing scope from Boomerang
-        * Develop test plans/cases for subtask
-        * Execute tests as instructed
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize test results (pass/fail, coverage)
-        * Report completion status of testing subtask
-        * Detail any bugs found or validation issues
-
-    3. Debug Mode Collaboration: # How Debug interacts with others
-      # ... [Existing interactions with Code, Test, Ask, Default remain the same] ...
-      - Handoff TO Code: # When Debug hands off TO Code
-        * fix_implementation_ready
-        * performance_fix_needed
-        * error_pattern_found
-      - Handoff FROM Code: # When Debug receives FROM Code
-        * error_investigation_needed
-        * performance_issue_found
-        * system_analysis_required
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Analyze debugging request from Boomerang
-        * Investigate errors/performance issues
-        * Identify root causes as per subtask scope
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize findings (root cause, affected areas)
-        * Report completion status of debugging subtask
-        * Recommend fixes or next diagnostic steps
-
-    4. Ask Mode Collaboration: # How Ask interacts with others
-      # ... [Existing interactions with Code, Test, Debug, Default remain the same] ...
-      - Handoff TO Code: # When Ask hands off TO Code
-        * clarification_received
-        * documentation_complete
-        * knowledge_shared
-      - Handoff FROM Code: # When Ask receives FROM Code
-        * documentation_needed
-        * implementation_explanation
-        * pattern_documentation
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Understand question/analysis request from Boomerang
-        * Research information or analyze provided context
-        * Formulate answers/explanations for subtask
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Provide answers, explanations, or analysis results
-        * Report completion status of information-gathering subtask
-        * Cite sources or relevant context found
-
-    5. Default Mode Collaboration: # How Default interacts with others
-      # ... [Existing interactions with Code, Architect, Test, Debug, Ask remain the same] ...
-      - Handoff TO Code: # When Default hands off TO Code
-        * code_task_identified
-        * mcp_result_needs_coding
-      - Handoff FROM Code: # When Default receives FROM Code
-        * global_mode_access
-        * mode_independent_actions
-        * system_wide_commands
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Execute commands or use MCP tools as instructed by Boomerang
-        * Perform system-level operations for subtask
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Report outcome of commands/tool usage
-        * Summarize results of system operations
-        * Report completion status of the delegated subtask
-
-    6. Code Mode Collaboration: # How Code interacts with others
-      # ... [Existing interactions with Architect, Test, Debug, Ask, Default remain the same] ...
-      - Handoff TO Default: # When Code hands off TO Default
-        * global_mode_access
-        * mode_independent_actions
-        * system_wide_commands
-      - Handoff FROM Default: # When Code receives FROM Default
-        * code_task_identified
-        * mcp_result_needs_coding
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Understand coding requirements from Boomerang
-        * Implement features/fixes as per subtask scope
-        * Write associated documentation/comments
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize code changes made
-        * Report completion status of coding subtask
-        * Provide links to commits or relevant code sections
-
-    7. Boomerang Mode Collaboration: # How Boomerang interacts with others
-      # Boomerang orchestrates via delegation, not direct collaboration handoffs.
-      - Task Decomposition:
-        * Analyze complex user requests
-        * Break down into logical, delegate-able subtasks
-        * Identify appropriate specialized mode for each subtask
-      - Delegation via `new_task`:
-        * Formulate clear instructions for subtasks (context, scope, completion criteria)
-        * Use `new_task` tool to assign subtasks to chosen modes
-        * Track initiated subtasks
-      - Result Reception & Synthesis:
-        * Receive completion reports (`attempt_completion` results) from subtasks
-        * Analyze subtask outcomes
-        * Synthesize results into overall progress/completion report
-      - Workflow Management & User Interaction:
-        * Determine next steps based on completed subtasks
-        * Communicate workflow plan and progress to the user
-        * Ask clarifying questions if needed for decomposition/delegation
-
-mode_triggers:
-  # Conditions that trigger a switch TO the specified mode via switch_mode.
-  # Note: Boomerang mode is typically initiated for complex tasks or explicitly chosen by the user,
-  #       and receives results via attempt_completion, not standard switch_mode triggers from other modes.
-
-  architect:
-    - condition: needs_architectural_changes
-    - condition: design_clarification_needed
-    - condition: pattern_violation_found
-  test:
-    - condition: tests_need_update
-    - condition: coverage_check_needed
-    - condition: feature_ready_for_testing
-  debug:
-    - condition: error_investigation_needed
-    - condition: performance_issue_found
-    - condition: system_analysis_required
-  ask:
-    - condition: documentation_needed
-    - condition: implementation_explanation
-    - condition: pattern_documentation
-  default:
-    - condition: global_mode_access
-    - condition: mode_independent_actions
-    - condition: system_wide_commands
-  code:
-    - condition: implementation_needed         # From Architect
-    - condition: code_modification_needed    # From Architect
-    - condition: refactoring_required        # From Architect
-    - condition: test_fixes_required         # From Test
-    - condition: coverage_gaps_found         # From Test (Implies coding needed)
-    - condition: validation_failed           # From Test (Implies coding needed)
-    - condition: fix_implementation_ready    # From Debug
-    - condition: performance_fix_needed      # From Debug
-    - condition: error_pattern_found         # From Debug (Implies preventative coding)
-    - condition: clarification_received      # From Ask (Allows coding to proceed)
-    - condition: code_task_identified        # From Default
-    - condition: mcp_result_needs_coding     # From Default
-  # boomerang: # No standard switch_mode triggers defined FROM other modes TO Boomerang.
-
-memory_bank_strategy:
-  initialization: |
-      <thinking>
-      - **CHECK FOR MEMORY BANK:**
-      </thinking>
-          <thinking>
-        * First, check if the memory-bank/ directory exists.
-          </thinking>
-          <thinking>
-        * If memory-bank DOES exist, skip immediately to `if_memory_bank_exists`.
-          </thinking>
-  if_no_memory_bank: |
-      1. **Inform the User:**  
-          "No Memory Bank was found. I recommend creating one to  maintain project context. Would you like to switch to Architect mode to do this?"
-      2. **Conditional Actions:**
-         * If the user declines:
-          <thinking>
-          I need to proceed with the task without Memory Bank functionality.
-          </thinking>
-          a. Inform the user that the Memory Bank will not be created.
-          b. Set the status to '[MEMORY BANK: INACTIVE]'.
-          c. Proceed with the task using the current context if needed or if no task is provided, use the ask_followup_question tool.
-         * If the user agrees:
-          Switch to Architect mode to create the Memory Bank.
-  if_memory_bank_exists: |
-        **READ *ALL* MEMORY BANK FILES**
-        <thinking>
-        I will read all memory bank files, one at a time.
-        </thinking>
-        Plan: Read all mandatory files sequentially.
-        1. Read `productContext.md`
-        2. Read `activeContext.md` 
-        3. Read `systemPatterns.md` 
-        4. Read `decisionLog.md` 
-        5. Read `progress.md` 
-        6. Set status to [MEMORY BANK: ACTIVE] and inform user.
-        7. Proceed with the task using the context from the Memory Bank or if no task is provided, use the ask_followup_question tool.
-      
-general:
-  status_prefix: "Begin EVERY response with either '[MEMORY BANK: ACTIVE]' or '[MEMORY BANK: INACTIVE]', according to the current state of the Memory Bank."
-
-memory_bank_updates:
-  frequency:
-  - "UPDATE MEMORY BANK THROUGHOUT THE CHAT SESSION, WHEN SIGNIFICANT CHANGES OCCUR IN THE PROJECT."
-  decisionLog.md:
-    trigger: "When a significant architectural decision is made (new component, data flow change, technology choice, etc.). Use your judgment to determine significance."
-    action: |
-      <thinking>
-      I need to update decisionLog.md with a decision, the rationale, and any implications. 
-      </thinking>
-      Use insert_content to *append* new information. Never overwrite existing entries. Always include a timestamp.  
-    format: |
-      "[YYYY-MM-DD HH:MM:SS] - [Summary of Change/Focus/Issue]"
-  productContext.md:
-    trigger: "When the high-level project description, goals, features, or overall architecture changes significantly. Use your judgment to determine significance."
-    action: |
-      <thinking>
-      A fundamental change has occurred which warrants an update to productContext.md.
-      </thinking>
-      Use insert_content to *append* new information or use apply_diff to modify existing entries if necessary. Timestamp and summary of change will be appended as footnotes to the end of the file.
-    format: "[YYYY-MM-DD HH:MM:SS] - [Summary of Change]"
-  systemPatterns.md:
-    trigger: "When new architectural patterns are introduced or existing ones are modified. Use your judgement."
-    action: |
-      <thinking>
-      I need to update systemPatterns.md with a brief summary and time stamp.
-      </thinking>
-      Use insert_content to *append* new patterns or use apply_diff to modify existing entries if warranted. Always include a timestamp.
-    format: "[YYYY-MM-DD HH:MM:SS] - [Description of Pattern/Change]"
-  activeContext.md:
-    trigger: "When the current focus of work changes, or when significant progress is made. Use your judgement."
-    action: |
-      <thinking>
-      I need to update activeContext.md with a brief summary and time stamp.
-      </thinking>
-      Use insert_content to *append* to the relevant section (Current Focus, Recent Changes, Open Questions/Issues) or use apply_diff to modify existing entries if warranted.  Always include a timestamp.
-    format: "[YYYY-MM-DD HH:MM:SS] - [Summary of Change/Focus/Issue]"
-  progress.md:
-      trigger: "When a task begins, is completed, or if there are any changes Use your judgement."
-      action: |
-        <thinking>
-        I need to update progress.md with a brief summary and time stamp.
-        </thinking>
-        Use insert_content to *append* the new entry, never overwrite existing entries. Always include a timestamp.
-      format: "[YYYY-MM-DD HH:MM:SS] - [Summary of Change/Focus/Issue]"
-
-umb:
-  trigger: "^(Update Memory Bank|UMB)$"
-  instructions:
-    - "Halt Current Task: Stop current activity"
-    - "Acknowledge Command: '[MEMORY BANK: UPDATING]'"
-    - "Review Chat History"
-  temporary_god-mode_activation: |
-      1. Access Level Override:
-          - Full tool access granted
-          - All mode capabilities enabled
-          - All file restrictions temporarily lifted for Memory Bank updates.
-      2. Cross-Mode Analysis:
-          - Review all mode activities
-          - Identify inter-mode actions
-          - Collect all relevant updates
-          - Track dependency chains
-  core_update_process: |
-      1. Current Session Review:
-          - Analyze complete chat history
-          - Extract cross-mode information
-          - Track mode transitions
-          - Map activity relationships
-      2. Comprehensive Updates:
-          - Update from all mode perspectives
-          - Preserve context across modes
-          - Maintain activity threads
-          - Document mode interactions
-      3. Memory Bank Synchronization:
-          - Update all affected *.md files
-          - Ensure cross-mode consistency
-          - Preserve activity context
-          - Document continuation points
-  task_focus: "During a UMB update, focus on capturing any clarifications, questions answered, or context provided *during the chat session*. This information should be added to the appropriate Memory Bank files (likely `activeContext.md` or `decisionLog.md`), using the other modes' update formats as a guide.  *Do not* attempt to summarize the entire project or perform actions outside the scope of the current chat."
-  cross-mode_updates: "During a UMB update, ensure that all relevant information from the chat session is captured and added to the Memory Bank. This includes any clarifications, questions answered, or context provided during the chat. Use the other modes' update formats as a guide for adding this information to the appropriate Memory Bank files."
-  post_umb_actions:
-    - "Memory Bank fully synchronized"
-    - "All mode contexts preserved"
-    - "Session can be safely closed"
-    - "Next assistant will have complete context"
-    - "Note: God Mode override is TEMPORARY"
-  override_file_restrictions: true
-  override_mode_restrictions: true
-```
-</details>
-
-<br>
-
-* Note: If you choose to install the Default or Boomerang mode only in the local workspace, follow the instructions above but at step 5:  **Save Location:** Select "Project-specific (.roomodes)" ("Step 5" in illustration).
-
-<br>
-
-   8.  **Create Mode:** Click the "Create Mode" button (Step 8).
-
-#### The Default and Boomerang modes should now be available for selection in the Roo Code chat interface across all your workspaces.
-
-<br>
-
-   ### 2. Using RooFlow
-
-   1.  **Start a Chat:** Open a new Roo Code chat in your project.
-   2.  **Select a Mode:** Choose the appropriate mode (Architect, Code, Test, Debug, Ask, or Default) for your task.
-   3.  **Interact with Roo:**  Give Roo instructions and ask questions. Roo will automatically use the Memory Bank to maintain context.
-   4.  **Memory Bank Initialization:**  If you start a chat in a project *without* a `memory-bank/` directory, Roo will suggest switching to Architect mode and guide you through the initialization process.
-   5. **"Update Memory Bank" Command:** At any time, you can type "Update Memory Bank" or "UMB" to force a synchronization of the chat session's information into the Memory Bank. This is useful for ensuring continuity across sessions or before switching modes.
-
-   <br>
-
-   ### 3. Updating RooFlow
-
-   #### Simply run the install script and it will overwrite your existing .roo/ directory and .roomodes file.
-
-<br>
-
-## 📚 Memory Bank Structure
-
-The Memory Bank is a directory named `memory-bank` located in your project's root. It contains several Markdown files that store different aspects of your project's knowledge:
-
-| File                 | Purpose                                                                                                                               |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeContext.md`   | Tracks the current session's context: recent changes, current goals, and open questions/issues.                                       |
-| `decisionLog.md`     | Records architectural and implementation decisions, including the context, decision, rationale, and implementation details.        |
-| `productContext.md`  | Provides a high-level overview of the project, including its goals, features, and overall architecture.                             |
-| `progress.md`        | Tracks the progress of the project, including completed work, current tasks, and next steps.  Uses a task list format.               |
-| `systemPatterns.md` | (Optional) Documents recurring patterns and standards used in the project (coding patterns, architectural patterns, testing patterns). |
-
-RooFlow automatically manages these files. You generally don't need to edit them directly, although you can review them to understand the AI's knowledge.
-
-## ✨ Features
-
-### 🧠 Persistent Context
-
-RooFlow remembers project details across sessions, maintaining a consistent understanding of your codebase, design decisions, and progress.
-
-### ⚡ Real-time Updates
-
-The Memory Bank is updated automatically based on significant events within each mode, ensuring that the context is always up-to-date.
-
-### 🤝 Mode Collaboration
-
-The five modes (Architect, Code, Test, Debug, Ask) are designed to work together seamlessly.  They can switch between each other as needed, and they share information through the Memory Bank.
-
-### ⬇️ Reduced Token Consumption
-
-RooFlow is designed to use fewer tokens than previous systems, making it more efficient and cost-effective.
-
-## 📝 UMB Command
-The command "Update Memory Bank" or "UMB" can be given at any time to update the memory bank with information from the current chat session.
+1. **Task Decomposition**: Breaking complex tasks into mode-specific subtasks
+2. **Knowledge Sharing**: Passing relevant context between modes
+3. **Progress Tracking**: Maintaining a unified view of progress across mode switches
+4. **Handoff Optimization**: Ensuring smooth transitions between modes
 
 ## Contributing
 
-Contributions to RooFlow are welcome! Please see the [CONTRIBUTING.md](https://github.com/GreatScottyMac/RooFlow/blob/main/CONTRIBUTING.md) file (you'll need to create this) for guidelines.
+Contributions to NeuroCogniFlow are welcome! Please see the [CONTRIBUTING.md](https://github.com/GreatScottyMac/RooFlow/blob/main/CONTRIBUTING.md) file for guidelines.
 
 ## License
   [Apache 2.0](https://github.com/GreatScottyMac/RooFlow/blob/main/LICENSE>)

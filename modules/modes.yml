@@ -3,25 +3,37 @@ modes:
   available:
     - name: Code
       slug: code
-      description: Responsible for code creation, modification, and documentation.
+      description: Responsible for code creation, modification, and procedural pattern recognition with cross-project code memory access.
     - name: Architect
       slug: architect
-      description: Focuses on system design, documentation structure, and project organization.
+      description: System design expert with meta-cognitive capabilities for architecture optimization and self-modification oversight.
     - name: Ask
       slug: ask
-      description: Answer questions, analyze code, explain concepts, and access external resources.
+      description: Knowledge retrieval specialist that leverages declarative memory to answer questions, analyze code, and explain concepts.
     - name: Debug
       slug: debug
-      description: An expert in troubleshooting and debugging.
+      description: Problem-solving expert with episodic memory access to identify patterns in errors and optimize system performance.
     - name: Test
       slug: test
-      description: Responsible for test-driven development, test execution, and quality assurance.
-    - name: Default
-      slug: default
-      description: "Custom global mode in Roo Code,with access to MCP servers, using default rules/instructions + custom memory bank instructions."
+      description: Quality assurance specialist with procedural memory access for test-driven development and comprehensive validation.
+    - name: Meta
+      slug: meta
+      description: Memory management orchestrator that oversees memory consolidation processes and handles cross-project knowledge transfer.
+    - name: Cognitive
+      slug: cognitive
+      description: Memory architect that organizes and optimizes memory structures, performs memory consolidation, and suggests structural improvements.
+    - name: Learning
+      slug: learning
+      description: Knowledge acquisition specialist that extracts domain knowledge and creates abstractions for cross-project knowledge reuse.
+    - name: Reflection
+      slug: reflection
+      description: Self-improvement specialist that analyzes mode effectiveness, suggests rule modifications, and tracks system performance metrics.
+    - name: Executive
+      slug: executive
+      description: Strategic planning coordinator that manages high-level goals, allocates resources across modes, and orchestrates project-level activities.
     - name: Boomerang 
       slug: boomerang
-      description: "Roo, a strategic workflow orchestrator who coordinates complex tasks by delegating them to appropriate specialized modes."
+      description: Strategic workflow orchestrator with memory-aware task delegation and cross-mode memory synchronization capabilities.
   creation_instructions: |
     If asked to create/edit a mode, use fetch_instructions:
   usage_format: |
@@ -31,181 +43,709 @@ modes:
 
 mode_collaboration: |
     # Collaboration definitions for how each specific mode interacts with others.
-    # Note: Boomerang primarily interacts via delegation (new_task) and result reception (attempt_completion),
-    #       not direct switch_mode handoffs like other modes.
+    # Mode collaboration includes memory exchange protocols defining which memory components 
+    # each mode can access/modify and how memory is handed off during transitions.
 
-    1. Architect Mode Collaboration: # How Architect interacts with others
-      # ... [Existing interactions with Code, Test, Debug, Ask, Default remain the same] ...
-      - Handoff TO Code: # When Architect hands off TO Code
+    1. Architect Mode Collaboration:
+      # Memory Access Permissions: Full access to all LTM components, prioritizing system patterns and decision logs
+      - Handoff TO Code: 
         * implementation_needed
         * code_modification_needed
         * refactoring_required
-      - Handoff FROM Code: # When Architect receives FROM Code
+        * Memory Handoff: Passes architectural context, constraints, and relevant design patterns
+      - Handoff FROM Code:
         * needs_architectural_changes
         * design_clarification_needed
         * pattern_violation_found
+        * Memory Reception: Receives implementation constraints and technical debt information
+      - Handoff TO Meta:
+        * memory_structure_optimization
+        * cross_project_pattern_needed
+        * Memory Handoff: Shares system architecture information for memory organization
+      - Handoff FROM Meta:
+        * architecture_patterns_available
+        * memory_consolidation_completed
+        * Memory Reception: Receives consolidated architectural knowledge from other projects
+      - Handoff TO Executive:
+        * strategic_decision_needed
+        * architectural_constraints_identified
+        * Memory Handoff: Provides architectural context for strategic planning
+      - Handoff FROM Executive:
+        * high_level_requirements_updated
+        * strategic_direction_change
+        * Memory Reception: Receives strategic context and prioritization information
       # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
+      - Delegated Task Reception: 
         * Analyze requirements from Boomerang
         * Design architecture/structure for subtask
         * Plan implementation steps if applicable
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
+        * Memory Reception: Receives task-specific context and constraints
+      - Completion Reporting TO Boomerang:
         * Summarize design decisions/artifacts created
         * Report completion status of architectural subtask
         * Provide necessary context for next steps
+        * Memory Handoff: Provides architectural decisions and context for further tasks
 
-    2. Test Mode Collaboration: # How Test interacts with others
-      # ... [Existing interactions with Code, Debug, Ask, Default remain the same] ...
-      - Handoff TO Code: # When Test hands off TO Code
+    2. Code Mode Collaboration:
+      # Memory Access Permissions: Prioritizes procedural memory, implementation patterns, and technical context
+      - Handoff TO Architect:
+        * needs_architectural_changes
+        * design_clarification_needed
+        * pattern_violation_found
+        * Memory Handoff: Provides implementation challenges and technical constraints
+      - Handoff FROM Architect:
+        * implementation_needed
+        * code_modification_needed
+        * refactoring_required
+        * Memory Reception: Receives architectural decisions and design patterns
+      - Handoff TO Test:
+        * implementation_complete
+        * ready_for_testing
+        * code_changes_finalized
+        * Memory Handoff: Provides implementation details and edge cases
+      - Handoff FROM Test:
         * test_fixes_required
         * coverage_gaps_found
         * validation_failed
-      - Handoff FROM Code: # When Test receives FROM Code
-        * tests_need_update
-        * coverage_check_needed
-        * feature_ready_for_testing
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Understand testing scope from Boomerang
-        * Develop test plans/cases for subtask
-        * Execute tests as instructed
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize test results (pass/fail, coverage)
-        * Report completion status of testing subtask
-        * Detail any bugs found or validation issues
-
-    3. Debug Mode Collaboration: # How Debug interacts with others
-      # ... [Existing interactions with Code, Test, Ask, Default remain the same] ...
-      - Handoff TO Code: # When Debug hands off TO Code
+        * Memory Reception: Receives test failure details and coverage information
+      - Handoff TO Debug:
+        * issue_identified
+        * performance_concern
+        * unexpected_behavior
+        * Memory Handoff: Provides relevant code structure and expected behavior
+      - Handoff FROM Debug:
         * fix_implementation_ready
         * performance_fix_needed
         * error_pattern_found
-      - Handoff FROM Code: # When Debug receives FROM Code
-        * error_investigation_needed
-        * performance_issue_found
-        * system_analysis_required
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Analyze debugging request from Boomerang
-        * Investigate errors/performance issues
-        * Identify root causes as per subtask scope
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Summarize findings (root cause, affected areas)
-        * Report completion status of debugging subtask
-        * Recommend fixes or next diagnostic steps
-
-    4. Ask Mode Collaboration: # How Ask interacts with others
-      # ... [Existing interactions with Code, Test, Debug, Default remain the same] ...
-      - Handoff TO Code: # When Ask hands off TO Code
-        * clarification_received
-        * documentation_complete
-        * knowledge_shared
-      - Handoff FROM Code: # When Ask receives FROM Code
+        * Memory Reception: Receives root cause analysis and fix recommendations
+      - Handoff TO Ask:
         * documentation_needed
         * implementation_explanation
         * pattern_documentation
+        * Memory Handoff: Provides code context for documentation
+      - Handoff FROM Ask:
+        * clarification_received
+        * documentation_complete
+        * knowledge_shared
+        * Memory Reception: Receives implementation guidance or clarification
+      - Handoff TO Learning:
+        * pattern_extraction_needed
+        * domain_model_identification
+        * Memory Handoff: Provides code patterns for knowledge extraction
+      - Handoff FROM Learning:
+        * domain_knowledge_updated
+        * pattern_abstraction_available
+        * Memory Reception: Receives abstracted patterns and domain models
       # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Understand question/analysis request from Boomerang
-        * Research information or analyze provided context
-        * Formulate answers/explanations for subtask
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Provide answers, explanations, or analysis results
-        * Report completion status of information-gathering subtask
-        * Cite sources or relevant context found
-
-    5. Default Mode Collaboration: # How Default interacts with others
-      # ... [Existing interactions with Code, Architect, Test, Debug, Ask remain the same] ...
-      - Handoff TO Code: # When Default hands off TO Code
-        * code_task_identified
-        * mcp_result_needs_coding
-      - Handoff FROM Code: # When Default receives FROM Code
-        * global_mode_access
-        * mode_independent_actions
-        * system_wide_commands
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
-        * Execute commands or use MCP tools as instructed by Boomerang
-        * Perform system-level operations for subtask
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
-        * Report outcome of commands/tool usage
-        * Summarize results of system operations
-        * Report completion status of the delegated subtask
-
-    6. Code Mode Collaboration: # How Code interacts with others
-      # ... [Existing interactions with Architect, Test, Debug, Ask, Default remain the same] ...
-      - Handoff TO Default: # When Code hands off TO Default
-        * global_mode_access
-        * mode_independent_actions
-        * system_wide_commands
-      - Handoff FROM Default: # When Code receives FROM Default
-        * code_task_identified
-        * mcp_result_needs_coding
-      # Interaction with Boomerang (as a subtask)
-      - Delegated Task Reception: # Receiving tasks FROM Boomerang via new_task
+      - Delegated Task Reception:
         * Understand coding requirements from Boomerang
         * Implement features/fixes as per subtask scope
         * Write associated documentation/comments
-      - Completion Reporting TO Boomerang: # Reporting results TO Boomerang via attempt_completion
+        * Memory Reception: Receives implementation specifications and constraints
+      - Completion Reporting TO Boomerang:
         * Summarize code changes made
         * Report completion status of coding subtask
         * Provide links to commits or relevant code sections
+        * Memory Handoff: Provides implementation details and technical context
 
-    7. Boomerang Mode Collaboration: # How Boomerang interacts with others
-      # Boomerang orchestrates via delegation, not direct collaboration handoffs.
-      - Task Decomposition:
+    3. Test Mode Collaboration:
+      # Memory Access Permissions: Prioritizes test workflows, quality patterns, and problem history
+      - Handoff TO Code:
+        * test_fixes_required
+        * coverage_gaps_found
+        * validation_failed
+        * Memory Handoff: Provides test failure details and reproduction steps
+      - Handoff FROM Code:
+        * implementation_complete
+        * ready_for_testing
+        * code_changes_finalized
+        * Memory Reception: Receives implementation details and expected behavior
+      - Handoff TO Debug:
+        * test_failures_need_investigation
+        * complex_failure_scenario
+        * intermittent_issue_detected
+        * Memory Handoff: Provides test context and failure details
+      - Handoff FROM Debug:
+        * root_cause_identified
+        * test_environment_issue
+        * test_strategy_adjustment_needed
+        * Memory Reception: Receives diagnostic information and fix recommendations
+      # Interaction with Boomerang (as a subtask)
+      - Delegated Task Reception:
+        * Understand testing scope from Boomerang
+        * Develop test plans/cases for subtask
+        * Execute tests as instructed
+        * Memory Reception: Receives testing requirements and acceptance criteria
+      - Completion Reporting TO Boomerang:
+        * Summarize test results (pass/fail, coverage)
+        * Report completion status of testing subtask
+        * Detail any bugs found or validation issues
+        * Memory Handoff: Provides test results and quality assessment
+
+    4. Debug Mode Collaboration:
+      # Memory Access Permissions: Prioritizes problem-solution history, error patterns, and system behavior
+      - Handoff TO Code:
+        * fix_implementation_ready
+        * performance_fix_needed
+        * error_pattern_found
+        * Memory Handoff: Provides root cause analysis and fix recommendations
+      - Handoff FROM Code:
+        * issue_identified
+        * performance_concern
+        * unexpected_behavior
+        * Memory Reception: Receives code context and problem description
+      - Handoff TO Test:
+        * root_cause_identified
+        * test_environment_issue
+        * test_strategy_adjustment_needed
+        * Memory Handoff: Provides diagnostic information and fix validation steps
+      - Handoff FROM Test:
+        * test_failures_need_investigation
+        * complex_failure_scenario
+        * intermittent_issue_detected
+        * Memory Reception: Receives test failure details and test environment context
+      - Handoff TO Reflection:
+        * recurring_issue_pattern
+        * systemic_problem_identified
+        * process_improvement_opportunity
+        * Memory Handoff: Provides error patterns and system improvement suggestions
+      # Interaction with Boomerang (as a subtask)
+      - Delegated Task Reception:
+        * Analyze debugging request from Boomerang
+        * Investigate errors/performance issues
+        * Identify root causes as per subtask scope
+        * Memory Reception: Receives problem context and reproduction steps
+      - Completion Reporting TO Boomerang:
+        * Summarize findings (root cause, affected areas)
+        * Report completion status of debugging subtask
+        * Recommend fixes or next diagnostic steps
+        * Memory Handoff: Provides diagnostic results and solution recommendations
+
+    5. Ask Mode Collaboration:
+      # Memory Access Permissions: Prioritizes declarative memory, domain knowledge, and project context
+      - Handoff TO Code:
+        * clarification_received
+        * documentation_complete
+        * knowledge_shared
+        * Memory Handoff: Provides implementation guidance or clarifications
+      - Handoff FROM Code:
+        * documentation_needed
+        * implementation_explanation
+        * pattern_documentation
+        * Memory Reception: Receives code context for documentation
+      - Handoff TO Learning:
+        * domain_knowledge_gap
+        * knowledge_formalization_needed
+        * concept_clarification_required
+        * Memory Handoff: Provides knowledge gaps and information needs
+      - Handoff FROM Learning:
+        * domain_knowledge_acquired
+        * concept_model_developed
+        * terminology_standardized
+        * Memory Reception: Receives formalized domain knowledge
+      # Interaction with Boomerang (as a subtask)
+      - Delegated Task Reception:
+        * Understand question/analysis request from Boomerang
+        * Research information or analyze provided context
+        * Formulate answers/explanations for subtask
+        * Memory Reception: Receives information needs and query context
+      - Completion Reporting TO Boomerang:
+        * Provide answers, explanations, or analysis results
+        * Report completion status of information-gathering subtask
+        * Cite sources or relevant context found
+        * Memory Handoff: Provides knowledge and explanations
+
+    6. Meta Mode Collaboration:
+      # Memory Access Permissions: Full access to all memory structures, manages cross-project knowledge
+      - Handoff TO Cognitive:
+        * memory_optimization_needed
+        * structure_reorganization_required
+        * memory_pruning_needed
+        * Memory Handoff: Provides memory usage patterns and optimization goals
+      - Handoff FROM Cognitive:
+        * memory_structure_optimized
+        * redundancies_removed
+        * retrieval_paths_improved
+        * Memory Reception: Receives updated memory structure
+      - Handoff TO Architect:
+        * architecture_patterns_available
+        * memory_consolidation_completed
+        * Memory Handoff: Provides consolidated architectural knowledge
+      - Handoff FROM Architect:
+        * memory_structure_optimization
+        * cross_project_pattern_needed
+        * Memory Reception: Receives system architecture for memory organization
+      - Handoff TO Executive:
+        * knowledge_resources_available
+        * context_transfer_ready
+        * Memory Handoff: Provides available knowledge resources for planning
+      - Handoff FROM Executive:
+        * knowledge_priorities_updated
+        * focus_area_changed
+        * Memory Reception: Receives strategic priorities for memory management
+      # Interaction with Boomerang (as a subtask)
+      - Delegated Task Reception:
+        * Manage memory operations as instructed
+        * Perform knowledge transfer between projects
+        * Optimize memory for specific task requirements
+        * Memory Reception: Receives memory management requirements
+      - Completion Reporting TO Boomerang:
+        * Report on memory operations performed
+        * Summarize knowledge transfers or optimizations
+        * Report completion status of memory management task
+        * Memory Handoff: Provides updated memory state and optimizations
+
+    7. Cognitive Mode Collaboration:
+      # Memory Access Permissions: Full access to memory architecture, specialized in structure optimization
+      - Handoff TO Meta:
+        * memory_structure_optimized
+        * redundancies_removed
+        * retrieval_paths_improved
+        * Memory Handoff: Provides updated memory structure
+      - Handoff FROM Meta:
+        * memory_optimization_needed
+        * structure_reorganization_required
+        * memory_pruning_needed
+        * Memory Reception: Receives memory usage patterns and optimization goals
+      - Handoff TO Reflection:
+        * memory_usage_patterns
+        * structural_improvement_suggestions
+        * Memory Handoff: Provides memory performance metrics
+      - Handoff FROM Reflection:
+        * memory_performance_feedback
+        * cognitive_process_adjustments
+        * Memory Reception: Receives analysis of memory effectiveness
+      # Interaction with Boomerang (as a subtask)
+      - Delegated Task Reception:
+        * Analyze memory structure as instructed
+        * Optimize memory organization for specific tasks
+        * Implement garbage collection or consolidation
+        * Memory Reception: Receives memory optimization requirements
+      - Completion Reporting TO Boomerang:
+        * Report on optimizations performed
+        * Summarize structural changes and benefits
+        * Report completion status of memory optimization task
+        * Memory Handoff: Provides updated memory structure and performance improvements
+
+    8. Learning Mode Collaboration:
+      # Memory Access Permissions: Specialized in knowledge acquisition and domain modeling
+      - Handoff TO Ask:
+        * domain_knowledge_acquired
+        * concept_model_developed
+        * terminology_standardized
+        * Memory Handoff: Provides formalized domain knowledge
+      - Handoff FROM Ask:
+        * domain_knowledge_gap
+        * knowledge_formalization_needed
+        * concept_clarification_required
+        * Memory Reception: Receives knowledge gaps and information needs
+      - Handoff TO Code:
+        * domain_knowledge_updated
+        * pattern_abstraction_available
+        * Memory Handoff: Provides abstracted patterns and domain models
+      - Handoff FROM Code:
+        * pattern_extraction_needed
+        * domain_model_identification
+        * Memory Reception: Receives code patterns for knowledge extraction
+      # Interaction with Boomerang (as a subtask)
+      - Delegated Task Reception:
+        * Extract domain knowledge as instructed
+        * Create knowledge abstractions for specified areas
+        * Formalize terminology and concepts
+        * Memory Reception: Receives knowledge acquisition requirements
+      - Completion Reporting TO Boomerang:
+        * Report on knowledge acquired
+        * Summarize abstractions and models created
+        * Report completion status of learning task
+        * Memory Handoff: Provides new domain knowledge and abstractions
+
+    9. Reflection Mode Collaboration:
+      # Memory Access Permissions: Specialized in system performance analysis and improvement
+      - Handoff TO Cognitive:
+        * memory_performance_feedback
+        * cognitive_process_adjustments
+        * Memory Handoff: Provides analysis of memory effectiveness
+      - Handoff FROM Cognitive:
+        * memory_usage_patterns
+        * structural_improvement_suggestions
+        * Memory Reception: Receives memory performance metrics
+      - Handoff FROM Debug:
+        * recurring_issue_pattern
+        * systemic_problem_identified
+        * process_improvement_opportunity
+        * Memory Reception: Receives error patterns and system improvement suggestions
+      - Handoff TO Executive:
+        * system_performance_analysis
+        * improvement_recommendations
+        * process_optimization_suggestions
+        * Memory Handoff: Provides performance insights and recommendations
+      - Handoff FROM Executive:
+        * performance_focus_areas
+        * strategic_improvement_needs
+        * Memory Reception: Receives strategic priorities for system improvement
+      # Interaction with Boomerang (as a subtask)
+      - Delegated Task Reception:
+        * Analyze system performance as instructed
+        * Evaluate effectiveness of specific processes
+        * Identify improvement opportunities
+        * Memory Reception: Receives reflection requirements and focus areas
+      - Completion Reporting TO Boomerang:
+        * Report on performance analysis
+        * Summarize improvement recommendations
+        * Report completion status of reflection task
+        * Memory Handoff: Provides performance insights and improvement suggestions
+
+    10. Executive Mode Collaboration:
+      # Memory Access Permissions: High-level strategic view across all memory components
+      - Handoff TO Architect:
+        * high_level_requirements_updated
+        * strategic_direction_change
+        * Memory Handoff: Provides strategic context and prioritization
+      - Handoff FROM Architect:
+        * strategic_decision_needed
+        * architectural_constraints_identified
+        * Memory Reception: Receives architectural context for strategic planning
+      - Handoff TO Meta:
+        * knowledge_priorities_updated
+        * focus_area_changed
+        * Memory Handoff: Provides strategic priorities for memory management
+      - Handoff FROM Meta:
+        * knowledge_resources_available
+        * context_transfer_ready
+        * Memory Reception: Receives available knowledge resources
+      - Handoff TO Reflection:
+        * performance_focus_areas
+        * strategic_improvement_needs
+        * Memory Handoff: Provides strategic priorities for system improvement
+      - Handoff FROM Reflection:
+        * system_performance_analysis
+        * improvement_recommendations
+        * process_optimization_suggestions
+        * Memory Reception: Receives performance insights and recommendations
+      # Interaction with Boomerang (as a subtask)
+      - Delegated Task Reception:
+        * Develop high-level strategies as instructed
+        * Coordinate cross-mode resources
+        * Establish project-level priorities
+        * Memory Reception: Receives strategic planning requirements
+      - Completion Reporting TO Boomerang:
+        * Report on strategic plans developed
+        * Summarize resource allocations and priorities
+        * Report completion status of executive task
+        * Memory Handoff: Provides strategic direction and resource allocation plans
+
+    11. Boomerang Mode Collaboration:
+      # Memory Access Permissions: Orchestrates memory access across modes, manages memory pre-loading
+      # Boomerang uses memory-aware delegation and cross-mode memory synchronization.
+      - Task Decomposition with Memory Context:
         * Analyze complex user requests
-        * Break down into logical, delegate-able subtasks
-        * Identify appropriate specialized mode for each subtask
-      - Delegation via `new_task`:
-        * Formulate clear instructions for subtasks (context, scope, completion criteria)
-        * Use `new_task` tool to assign subtasks to chosen modes
-        * Track initiated subtasks
-      - Result Reception & Synthesis:
-        * Receive completion reports (`attempt_completion` results) from subtasks
-        * Analyze subtask outcomes
-        * Synthesize results into overall progress/completion report
-      - Workflow Management & User Interaction:
-        * Determine next steps based on completed subtasks
-        * Communicate workflow plan and progress to the user
-        * Ask clarifying questions if needed for decomposition/delegation
+        * Assess memory state and availability across layers
+        * Break down into logical, delegate-able subtasks with memory requirements
+        * Pre-load relevant memory components for assigned modes
+      - Memory-Aware Delegation via `new_task`:
+        * Include memory access permissions in task delegation
+        * Specify which memory components to pre-load for each subtask
+        * Establish memory isolation boundaries for parallel tasks
+        * Track memory state before and after subtasks
+      - Memory Synthesis from Completed Subtasks:
+        * Receive memory updates from subtask completions
+        * Reconcile potentially conflicting memory updates
+        * Integrate new knowledge into appropriate memory layers
+        * Manage cross-mode memory consistency
+      - Strategic Memory Management:
+        * Predict memory needs for upcoming subtasks
+        * Allocate memory resources to prioritized tasks
+        * Ensure consistent memory context across task sequences
+        * Trigger memory consolidation when appropriate
+
+memory_interchange_protocol: |
+    # Standard protocol for memory exchange between modes
+    # This defines how information is formatted, tagged, and transferred
+    
+    1. Memory Package Structure:
+       * timestamp: When the memory was created/modified
+       * source_mode: Which mode created/modified the memory
+       * target_modes: Which modes should receive this memory
+       * memory_type: Declarative, Procedural, Episodic, or Meta
+       * priority_level: Importance ranking (1-5)
+       * retention_policy: Volatile, Short-term, Long-term
+       * content_format: Text, Code, Structure, or Mixed
+       * content: The actual memory content
+       * associations: Links to related memory items
+       * context: Working context when memory was created
+    
+    2. Memory Exchange Operations:
+       * share_memory: Make memory available to another mode
+       * request_memory: Ask for specific memory from another mode
+       * update_memory: Modify existing memory
+       * consolidate_memory: Move from working to long-term memory
+       * prune_memory: Remove obsolete or redundant memory
+       * associate_memory: Create links between memory items
+    
+    3. Memory Transfer During Mode Switch:
+       * Pre-switch preparation: Package relevant memory
+       * Handoff process: Transfer memory package with switch
+       * Post-switch integration: New mode incorporates memory
+       * Acknowledgment: Confirmation of successful memory transfer
+    
+    4. Cross-Mode Memory Sharing:
+       * Shared workspace: Common memory accessible by multiple modes
+       * Access control: Permissions for reading/writing memory
+       * Conflict resolution: Handling contradictory memory updates
+       * Consistency maintenance: Ensuring shared memory remains coherent
 
 mode_triggers:
   # Conditions that trigger a switch TO the specified mode via switch_mode.
-  # Note: Boomerang mode is typically initiated for complex tasks or explicitly chosen by the user,
-  #       and receives results via attempt_completion, not standard switch_mode triggers from other modes.
+  # With memory conditions that indicate when memory state triggers mode switch.
 
   architect:
     - condition: needs_architectural_changes
+      memory_indicator: structural_inconsistency_detected
     - condition: design_clarification_needed
+      memory_indicator: architectural_knowledge_gap
     - condition: pattern_violation_found
+      memory_indicator: design_pattern_mismatch
+    - condition: meta_architecture_optimization
+      memory_indicator: system_structure_improvement_opportunity
+  
+  code:
+    - condition: implementation_needed
+      memory_indicator: design_ready_for_coding
+    - condition: code_modification_needed
+      memory_indicator: implementation_change_required
+    - condition: refactoring_required
+      memory_indicator: technical_debt_threshold_exceeded
+    - condition: test_fixes_required
+      memory_indicator: test_failure_details_available
+    - condition: coverage_gaps_found
+      memory_indicator: coverage_metrics_below_threshold
+    - condition: validation_failed
+      memory_indicator: validation_error_details_available
+    - condition: fix_implementation_ready
+      memory_indicator: solution_approach_identified
+    - condition: performance_fix_needed
+      memory_indicator: performance_metrics_below_threshold
+    - condition: error_pattern_found
+      memory_indicator: recurring_error_pattern_identified
+    - condition: clarification_received
+      memory_indicator: implementation_guidance_available
+    - condition: domain_knowledge_updated
+      memory_indicator: new_implementation_patterns_available
+  
   test:
     - condition: tests_need_update
+      memory_indicator: test_coverage_gap_identified
     - condition: coverage_check_needed
+      memory_indicator: implementation_changes_need_validation
     - condition: feature_ready_for_testing
+      memory_indicator: implementation_completed_flag
+    - condition: implementation_complete
+      memory_indicator: code_changes_ready_for_validation
+  
   debug:
     - condition: error_investigation_needed
+      memory_indicator: error_detected_in_system
     - condition: performance_issue_found
+      memory_indicator: performance_degradation_detected
     - condition: system_analysis_required
+      memory_indicator: unexpected_system_behavior
+    - condition: test_failures_need_investigation
+      memory_indicator: complex_test_failure_pattern
+  
   ask:
     - condition: documentation_needed
+      memory_indicator: knowledge_gap_detected
     - condition: implementation_explanation
+      memory_indicator: code_understanding_required
     - condition: pattern_documentation
-  default:
-    - condition: global_mode_access
-    - condition: mode_independent_actions
-    - condition: system_wide_commands
+      memory_indicator: pattern_knowledge_formalization_needed
+    - condition: domain_knowledge_gap
+      memory_indicator: missing_concept_definitions
+  
+  meta:
+    - condition: memory_consolidation_needed
+      memory_indicator: working_memory_threshold_exceeded
+    - condition: cross_project_knowledge_requested
+      memory_indicator: similarity_with_previous_projects
+    - condition: knowledge_transfer_required
+      memory_indicator: relevant_knowledge_in_global_memory
+    - condition: memory_optimization_opportunity
+      memory_indicator: retrieval_performance_degradation
+  
+  cognitive:
+    - condition: memory_structure_optimization_needed
+      memory_indicator: memory_fragmentation_detected
+    - condition: memory_pruning_required
+      memory_indicator: obsolete_memory_threshold_exceeded
+    - condition: retrieval_path_optimization
+      memory_indicator: memory_access_latency_increasing
+  
+  learning:
+    - condition: knowledge_acquisition_needed
+      memory_indicator: recurring_knowledge_gaps
+    - condition: pattern_abstraction_required
+      memory_indicator: similar_patterns_across_contexts
+    - condition: domain_model_creation
+      memory_indicator: domain_terminology_inconsistency
+  
+  reflection:
+    - condition: system_performance_review
+      memory_indicator: performance_metrics_collection_complete
+    - condition: process_improvement_opportunity
+      memory_indicator: recurring_workflow_inefficiency
+    - condition: rule_effectiveness_evaluation
+      memory_indicator: rule_performance_data_available
+  
+  executive:
+    - condition: strategic_planning_needed
+      memory_indicator: project_direction_uncertainty
+    - condition: resource_allocation_required
+      memory_indicator: competing_priority_conflicts
+    - condition: project_coordination_needed
+      memory_indicator: cross_mode_dependency_complexity
+
+  # Boomerang is typically initiated for complex tasks or explicitly chosen by the user
+
+memory_access_permissions:
+  architect:
+    read:
+      - all_long_term_memory
+      - all_working_memory
+    write:
+      - declarative/project-context.md
+      - procedural/system-patterns.md
+      - episodic/decision-log.md
+      - modes/architect/
+    priority_components:
+      - procedural/system-patterns.md
+      - episodic/decision-log.md
+      - declarative/project-context.md
+  
   code:
-    - condition: implementation_needed         # From Architect
-    - condition: code_modification_needed    # From Architect
-    - condition: refactoring_required        # From Architect
-    - condition: test_fixes_required         # From Test
-    - condition: coverage_gaps_found         # From Test (Implies coding needed)
-    - condition: validation_failed           # From Test (Implies coding needed)
-    - condition: fix_implementation_ready    # From Debug
-    - condition: performance_fix_needed      # From Debug
-    - condition: error_pattern_found         # From Debug (Implies preventative coding)
-    - condition: clarification_received      # From Ask (Allows coding to proceed)
-    - condition: code_task_identified        # From Default
-    - condition: mcp_result_needs_coding     # From Default
-  # boomerang: # No standard switch_mode triggers defined FROM other modes TO Boomerang.
+    read:
+      - declarative/project-context.md
+      - declarative/domain-knowledge/
+      - procedural/system-patterns.md
+      - procedural/best-practices.md
+      - episodic/decision-log.md
+      - modes/code/
+    write:
+      - procedural/best-practices.md
+      - modes/code/
+      - active-memory/mode-specific/code-context.md
+    priority_components:
+      - procedural/best-practices.md
+      - declarative/domain-knowledge/
+      - modes/code/patterns.md
+  
+  test:
+    read:
+      - declarative/project-context.md
+      - procedural/system-patterns.md
+      - procedural/workflows.md
+      - episodic/problem-solutions.md
+      - modes/test/
+    write:
+      - procedural/workflows.md
+      - episodic/problem-solutions.md
+      - modes/test/
+      - active-memory/mode-specific/test-context.md
+    priority_components:
+      - procedural/workflows.md
+      - modes/test/expertise.md
+  
+  debug:
+    read:
+      - declarative/project-context.md
+      - procedural/best-practices.md
+      - episodic/problem-solutions.md
+      - episodic/decision-log.md
+      - modes/debug/
+    write:
+      - episodic/problem-solutions.md
+      - modes/debug/
+      - active-memory/mode-specific/debug-context.md
+    priority_components:
+      - episodic/problem-solutions.md
+      - modes/debug/patterns.md
+  
+  ask:
+    read:
+      - all_declarative_memory
+      - procedural/system-patterns.md
+      - procedural/best-practices.md
+      - episodic/problem-solutions.md
+      - modes/ask/
+    write:
+      - declarative/domain-knowledge/
+      - modes/ask/
+      - active-memory/mode-specific/ask-context.md
+    priority_components:
+      - declarative/project-context.md
+      - declarative/domain-knowledge/
+      - modes/ask/expertise.md
+  
+  meta:
+    read:
+      - all_memory_components
+    write:
+      - all_memory_components
+    priority_components:
+      - meta/self-improvement.md
+      - meta/mode-creation.md
+      - meta/rule-performance.md
+  
+  cognitive:
+    read:
+      - all_memory_components
+    write:
+      - memory_structure_modifications
+      - meta/rule-performance.md
+    priority_components:
+      - meta/self-improvement.md
+      - meta/rule-performance.md
+  
+  learning:
+    read:
+      - all_declarative_memory
+      - procedural/system-patterns.md
+      - procedural/best-practices.md
+    write:
+      - declarative/domain-knowledge/
+      - global-memory/domain-abstractions/
+    priority_components:
+      - declarative/domain-knowledge/
+      - global-memory/domain-abstractions/
+  
+  reflection:
+    read:
+      - all_memory_components
+    write:
+      - meta/rule-performance.md
+      - meta/self-improvement.md
+    priority_components:
+      - meta/rule-performance.md
+      - episodic/problem-solutions.md
+  
+  executive:
+    read:
+      - all_long_term_memory
+      - all_working_memory
+    write:
+      - declarative/project-context.md
+      - meta/self-improvement.md
+      - active-memory/current-focus.md
+    priority_components:
+      - declarative/project-context.md
+      - episodic/progress.md
+      - active-memory/current-focus.md
+  
+  boomerang:
+    read:
+      - all_memory_components
+    write:
+      - memory_transfer_permissions
+      - active-memory/
+    priority_components:
+      - active-memory/current-focus.md
+      - episodic/progress.md

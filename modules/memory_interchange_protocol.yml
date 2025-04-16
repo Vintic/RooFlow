@@ -1,0 +1,267 @@
+# Memory Interchange Protocol
+# Defines how memory is packaged, transferred, and shared between different modes
+
+memory_package:
+  structure:
+    # Basic structure of a memory package for transfer between modes
+    timestamp: "ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)"
+    source_mode: "Mode that created or modified the memory"
+    target_modes: "Array of modes that should receive this memory"
+    memory_type: "One of: declarative, procedural, episodic, meta"
+    priority_level: "Integer 1-5, with 5 being highest priority"
+    retention_policy: "One of: volatile, short_term, long_term"
+    content_format: "One of: text, code, structure, mixed"
+    content: "The actual memory content"
+    associations: "Array of references to related memory items"
+    context: "Contextual information about when this memory was created"
+    metadata:
+      project_specific: "Boolean indicating if memory is project-specific"
+      domain: "Domain category if applicable"
+      abstraction_level: "One of: concrete, semi-abstract, abstract"
+      confidence: "Float between 0-1 indicating confidence in this memory"
+      usage_count: "How many times this memory has been accessed"
+      last_accessed: "Timestamp of last access"
+
+  serialization:
+    # How memory is serialized for transfer
+    format: "YAML or JSON, depending on complexity"
+    compression: "Applied for large memory packages"
+    encoding: "UTF-8"
+    validation: "Schema validation on both ends of transfer"
+
+memory_operations:
+  # Standard operations for memory management
+  share_memory:
+    description: "Make memory available to another mode"
+    parameters:
+      memory_id: "Unique identifier of memory to share"
+      target_modes: "Modes to share with"
+      access_level: "Read-only or read-write"
+    returns: "Success status and access confirmation"
+  
+  request_memory:
+    description: "Request specific memory from another mode"
+    parameters:
+      query: "Search parameters to identify requested memory"
+      source_mode: "Mode to request from"
+      priority: "Urgency of request"
+    returns: "Requested memory package or error"
+  
+  update_memory:
+    description: "Modify existing memory"
+    parameters:
+      memory_id: "Unique identifier of memory to update"
+      changes: "Specific changes to apply"
+      justification: "Reason for the update"
+    returns: "Updated memory package and change summary"
+  
+  consolidate_memory:
+    description: "Move memory from working memory to long-term memory"
+    parameters:
+      memory_ids: "Array of memories to consolidate"
+      target_location: "Where in LTM to store the memory"
+      transformation: "Any changes to apply during consolidation"
+    returns: "Confirmation and new memory locations"
+  
+  prune_memory:
+    description: "Remove obsolete or redundant memory"
+    parameters:
+      memory_ids: "Array of memories to prune"
+      justification: "Reason for pruning"
+      backup: "Whether to create backup before pruning"
+    returns: "Confirmation and space reclaimed"
+  
+  associate_memory:
+    description: "Create links between memory items"
+    parameters:
+      source_id: "Memory to create association from"
+      target_ids: "Memories to associate with"
+      association_type: "Nature of the association"
+      strength: "Strength of association (0-1)"
+    returns: "Updated association graph"
+
+mode_switch_protocol:
+  # Memory transfer during mode switches
+  pre_switch:
+    description: "Prepare memory for handoff before switching modes"
+    steps:
+      - "Identify relevant memories for target mode"
+      - "Package memories according to memory package structure"
+      - "Apply context and association information"
+      - "Prepare working memory summary"
+  
+  handoff_process:
+    description: "Transfer memory during mode switch"
+    steps:
+      - "Transfer packaged memories to target mode"
+      - "Include context of why the switch occurred"
+      - "Transfer current focus and task state"
+      - "Provide prioritized access paths to related memories"
+  
+  post_switch:
+    description: "Integration of memory after mode switch"
+    steps:
+      - "Validate received memory packages"
+      - "Integrate into mode's working memory"
+      - "Update associations with existing mode-specific memory"
+      - "Acknowledge successful integration back to source mode"
+  
+  acknowledgment:
+    description: "Confirm successful memory transfer"
+    information:
+      - "Confirmation of received packages"
+      - "Any integration issues encountered"
+      - "Initial relevance assessment of received memory"
+      - "Estimated cognitive load of integration"
+
+cross_mode_sharing:
+  # Sharing memory without full mode switches
+  shared_workspace:
+    description: "Common memory space accessible by multiple modes"
+    implementation:
+      location: "active-memory/shared/"
+      structure: "Organized by task and topic"
+      access_control: "Mode-specific permissions"
+      synchronization: "Lock mechanism for concurrent updates"
+  
+  access_control:
+    description: "Permissions for reading/writing shared memory"
+    levels:
+      - "read_only: Can only read shared memory"
+      - "read_write: Can read and modify existing memory"
+      - "create: Can create new memory items"
+      - "admin: Can modify structure and permissions"
+    enforcement: "Validated at memory operation execution"
+  
+  conflict_resolution:
+    description: "Handling contradictory memory updates"
+    strategies:
+      - "timestamp_based: Most recent update wins"
+      - "priority_based: Higher priority mode's update prevails"
+      - "merge_based: Attempt to reconcile differences"
+      - "notification: Alert modes to manual resolution need"
+    process:
+      - "Detect conflict through versioning"
+      - "Apply appropriate resolution strategy"
+      - "Notify affected modes of resolution"
+      - "Log conflict and resolution for learning"
+  
+  consistency_maintenance:
+    description: "Ensuring shared memory remains coherent"
+    mechanisms:
+      - "Periodic consistency checks"
+      - "Dependency tracking between memory items"
+      - "Propagation of updates to dependent items"
+      - "Versioning and change history"
+    recovery:
+      - "Rollback capability for failed updates"
+      - "Reconstruction from history if corrupted"
+      - "Consistency repair protocols"
+
+memory_efficiency:
+  # Optimizing memory transfers for token efficiency
+  compression_techniques:
+    description: "Methods to reduce memory size for transfer"
+    approaches:
+      - "Reference instead of full content when possible"
+      - "Incremental updates rather than full transfers"
+      - "Abstractive summarization of large memory items"
+      - "Prioritized partial transfer based on relevance"
+  
+  relevance_filtering:
+    description: "Only transfer the most relevant memory"
+    process:
+      - "Context-based relevance scoring"
+      - "Task-specific importance weighting"
+      - "Historical usage pattern analysis"
+      - "Predictive pre-loading of likely needed memory"
+  
+  caching:
+    description: "Maintain frequently accessed memory in fast-access storage"
+    implementation:
+      - "Mode-specific cache of recent interactions"
+      - "Shared cache for cross-mode common reference"
+      - "Cache invalidation protocols"
+      - "Preemptive caching based on workflow patterns"
+
+adaptive_memory_protocol:
+  # Self-improving memory transfer system
+  performance_monitoring:
+    description: "Track effectiveness of memory transfers"
+    metrics:
+      - "Transfer speed and volume"
+      - "Relevance accuracy of transferred memory"
+      - "Integration friction after transfers"
+      - "Token efficiency of memory operations"
+  
+  protocol_evolution:
+    description: "Improve memory interchange over time"
+    mechanisms:
+      - "Track memory operation effectiveness"
+      - "Identify patterns in successful transfers"
+      - "Experiment with protocol variations"
+      - "Implement improvements based on evidence"
+  
+  learning_from_failures:
+    description: "Improve from memory transfer problems"
+    process:
+      - "Log all transfer failures and inefficiencies"
+      - "Analyze root causes of problems"
+      - "Develop targeted improvements"
+      - "Implement and validate solutions"
+
+project_specific_memory:
+  # Handling project-specific memory contexts
+  isolation:
+    description: "Keep project-specific memory separate"
+    implementation:
+      - "Project namespace for all memory items"
+      - "Clear boundaries between project contexts"
+      - "Metadata tagging of project-specific content"
+  
+  cross_project_learning:
+    description: "Abstract and share knowledge across projects"
+    process:
+      - "Identify generalizable knowledge in project memory"
+      - "Abstract away project-specific details"
+      - "Elevate to global knowledge with source reference"
+      - "Track application and effectiveness across projects"
+  
+  context_switching:
+    description: "Efficiently transition between project contexts"
+    steps:
+      - "Unload current project context from working memory"
+      - "Load target project context"
+      - "Preserve global knowledge continuity"
+      - "Bring relevant cross-project knowledge"
+
+global_memory:
+  # Cross-project knowledge repository
+  structure:
+    description: "Organization of global memory"
+    components:
+      - "domain_knowledge: Technology and domain expertise"
+      - "pattern_library: Reusable solutions and patterns"
+      - "best_practices: Proven approaches and standards"
+      - "anti_patterns: Known pitfalls and problems"
+  
+  knowledge_elevation:
+    description: "Process for adding to global memory"
+    criteria:
+      - "Repeated usefulness across multiple projects"
+      - "Abstractable beyond specific implementations"
+      - "Validated effectiveness in different contexts"
+      - "Stable enough for long-term reference"
+    process:
+      - "Candidate identification in project memory"
+      - "Abstraction and generalization"
+      - "Peer validation across modes"
+      - "Integration into global structure"
+  
+  retrieval:
+    description: "Finding relevant global knowledge"
+    mechanisms:
+      - "Semantic search across global memory"
+      - "Context-based recommendation system"
+      - "Personalization based on mode preferences"
+      - "Learning from retrieval patterns" 

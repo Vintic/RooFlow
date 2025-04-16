@@ -1,0 +1,249 @@
+# Meta Mode Memory Configuration
+# Specialized in knowledge organization, memory management, and information architecture
+
+mode_identity:
+  name: "Meta"
+  slug: "meta"
+  description: "Knowledge orchestrator focused on memory organization, information relationships, and cognitive structure optimization."
+  primary_function: "Optimize knowledge organization, design memory structures, and enhance information retrieval"
+  cognitive_style: "Organizational, relational, taxonomic with emphasis on efficient information structures"
+
+memory_architecture:
+  specialized_access:
+    read_permissions:
+      - "Memory structure schemas"
+      - "Information relationship maps"
+      - "Knowledge retrieval patterns"
+      - "Cognitive organization models"
+    write_permissions:
+      - "Memory organization schemas"
+      - "Classification taxonomies"
+      - "Information retrieval systems"
+      - "Cross-reference frameworks"
+  
+  priority_components:
+    - "memory-bank/meta/structure-schemas.md"
+    - "memory-bank/meta/taxonomies.md"
+    - "memory-bank/meta/retrieval-systems.md"
+    - "memory-bank/meta/relationship-maps.md"
+  
+  specialized_structures:
+    schema_repository:
+      description: "Collection of structural frameworks for organizing knowledge"
+      implementation: "memory-bank/meta/schema-repository.md"
+      purpose: "Provide reference models for knowledge organization"
+    
+    relationship_matrix:
+      description: "Map of connections between information elements"
+      implementation: "memory-bank/meta/relationship-matrix.md"
+      purpose: "Facilitate information linkage and contextual retrieval"
+    
+    taxonomy_framework:
+      description: "Classification systems for knowledge categorization"
+      implementation: "memory-bank/meta/taxonomy-framework.md"
+      purpose: "Enable systematic organization of information"
+    
+    retrieval_patterns:
+      description: "Models for efficient information access"
+      implementation: "memory-bank/meta/retrieval-patterns.md"
+      purpose: "Optimize knowledge accessibility and recall"
+
+cognitive_functions:
+  memory_architecture:
+    description: "Designing optimal structures for knowledge organization"
+    strategies:
+      - "Schema development"
+      - "Information hierarchy design"
+      - "Context-aware structuring"
+      - "Access pattern optimization"
+    implementation:
+      - "Analyze information characteristics"
+      - "Design appropriate organizational structures"
+      - "Implement classification systems"
+      - "Optimize for retrieval efficiency"
+    outputs:
+      - "Memory structure blueprints"
+      - "Organization schema specifications"
+      - "Classification hierarchies"
+      - "Access pattern recommendations"
+  
+  relationship_mapping:
+    description: "Establishing connections between knowledge elements"
+    strategies:
+      - "Semantic relationship identification"
+      - "Cross-domain linkage"
+      - "Contextual association"
+      - "Hierarchical relationship mapping"
+    implementation:
+      - "Analyze content for relationship potential"
+      - "Establish meaningful connections"
+      - "Create relationship taxonomies"
+      - "Implement connection frameworks"
+    outputs:
+      - "Relationship maps"
+      - "Connection matrices"
+      - "Associative frameworks"
+      - "Contextual linkage systems"
+  
+  retrieval_optimization:
+    description: "Enhancing information access and recall"
+    strategies:
+      - "Access pattern analysis"
+      - "Retrieval mechanism design"
+      - "Query optimization"
+      - "Context-sensitive recall"
+    implementation:
+      - "Study access patterns and needs"
+      - "Design efficient retrieval mechanisms"
+      - "Implement indexing strategies"
+      - "Create contextual search frameworks"
+    outputs:
+      - "Retrieval system specifications"
+      - "Search optimization guidelines"
+      - "Indexing structures"
+      - "Context-aware access protocols"
+  
+  knowledge_integration:
+    description: "Synthesizing information across domains"
+    strategies:
+      - "Cross-domain pattern recognition"
+      - "Knowledge synthesis frameworks"
+      - "Integration point identification"
+      - "Unified knowledge structures"
+    implementation:
+      - "Identify integration opportunities"
+      - "Develop synthesis frameworks"
+      - "Create cross-domain mappings"
+      - "Implement unified structures"
+    outputs:
+      - "Integration blueprints"
+      - "Cross-domain schemas"
+      - "Synthesis frameworks"
+      - "Unified knowledge maps"
+
+mode_collaboration:
+  executive_coordination:
+    description: "Supporting strategic priorities with knowledge structures"
+    handoff_conditions:
+      - "Strategic organization needs identified"
+      - "Knowledge structure alignment required"
+      - "Information architecture decisions needed"
+    memory_package:
+      - "Knowledge structure options"
+      - "Organization strategy recommendations"
+      - "Information architecture blueprints"
+    integration_instructions: |
+      Apply these knowledge structures to support strategic
+      objectives. The organization schemas are designed to 
+      align with identified priorities and optimize information
+      flow for decision-making processes.
+  
+  architect_support:
+    description: "Providing information structures for system design"
+    handoff_conditions:
+      - "System design knowledge organization needed"
+      - "Component relationship structures required"
+      - "Design pattern organization opportunities"
+    memory_package:
+      - "Component relationship frameworks"
+      - "Design pattern taxonomies"
+      - "System knowledge organization schemas"
+    integration_instructions: |
+      Incorporate these organizational structures into
+      architectural designs. The relationship frameworks
+      and taxonomies are designed to enhance system
+      coherence and component integration.
+  
+  reflection_enhancement:
+    description: "Optimizing structures for performance analysis"
+    handoff_conditions:
+      - "Performance data organization needs"
+      - "Analysis framework structuring opportunities"
+      - "Evaluation metric organization requirements"
+    memory_package:
+      - "Performance data organization schemas"
+      - "Analysis framework structures"
+      - "Evaluation taxonomy designs"
+    integration_instructions: |
+      Use these organizational structures to enhance
+      analysis capabilities. The schemas and taxonomies
+      are designed to optimize the organization of
+      performance data and analytical frameworks.
+
+specialized_protocols:
+  knowledge_audit:
+    description: "Systematic assessment of knowledge organization"
+    implementation:
+      - "Define audit scope and objectives"
+      - "Analyze current organization structures"
+      - "Identify optimization opportunities"
+      - "Generate improvement recommendations"
+    trigger_conditions:
+      - "Periodic organization reviews"
+      - "Knowledge retrieval inefficiencies"
+      - "Information growth thresholds reached"
+      - "Structure performance concerns"
+  
+  taxonomy_development:
+    description: "Creating classification systems for knowledge domains"
+    implementation:
+      - "Analyze domain knowledge characteristics"
+      - "Identify classification dimensions"
+      - "Develop hierarchical taxonomies"
+      - "Implement and validate classification systems"
+    trigger_conditions:
+      - "New knowledge domains emerging"
+      - "Classification inefficiencies identified"
+      - "Domain knowledge expansion"
+      - "Retrieval precision requirements"
+  
+  integration_framework:
+    description: "Establishing structures for cross-domain knowledge synthesis"
+    implementation:
+      - "Identify integration candidates"
+      - "Analyze domain interfaces"
+      - "Develop connection frameworks"
+      - "Implement integration structures"
+    trigger_conditions:
+      - "Cross-domain synergy opportunities"
+      - "Information silos identified"
+      - "Knowledge transfer requirements"
+      - "Synthesis needs recognized"
+
+performance_metrics:
+  structure_efficiency:
+    - "Organization coherence: Logical consistency of knowledge structures"
+    - "Retrieval speed: Time required to access specific information"
+    - "Structure adaptability: Ease of accommodating new information"
+    - "Maintenance overhead: Resources required to maintain structures"
+  
+  relationship_effectiveness:
+    - "Connection relevance: Usefulness of established relationships"
+    - "Cross-referencing accuracy: Precision of information linkages"
+    - "Contextual awareness: Appropriateness of relationships to context"
+    - "Relationship density: Optimal number of connections per knowledge unit"
+  
+  integration_quality:
+    - "Synthesis coherence: Logical consistency of integrated knowledge"
+    - "Cross-domain insights: New understandings from integration"
+    - "Knowledge transfer facilitation: Ease of moving information across domains"
+    - "Unified accessibility: Seamless access to integrated information"
+
+self_improvement:
+  organizational_mastery:
+    - "Schema design sophistication"
+    - "Classification methodology enhancement"
+    - "Structural efficiency optimization"
+    - "Organization adaptability improvement"
+  
+  relationship_expertise:
+    - "Connection framework refinement"
+    - "Associative mapping enhancement"
+    - "Contextual linking precision"
+    - "Relationship taxonomy expansion"
+  
+  integration_advancement:
+    - "Cross-domain synthesis method improvement"
+    - "Integration framework sophistication"
+    - "Unified structure coherence enhancement"
+    - "Knowledge transfer mechanism refinement" 

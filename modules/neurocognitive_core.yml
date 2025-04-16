@@ -1,0 +1,548 @@
+# NeuroCogniFlow Core System
+# Defines fundamental cognitive processes, memory architecture, and self-improvement capabilities
+
+cognitive_architecture:
+  system_overview:
+    description: |
+      NeuroCogniFlow is a cognitive-inspired AI development framework implementing a multi-layered 
+      memory architecture modeled after human memory systems. It provides specialized modes with their own 
+      memory spaces, cross-domain knowledge sharing, and self-improvement capabilities.
+    
+    core_principles:
+      - "Layered memory: Short-term, working, and long-term memory interactions"
+      - "Specialized cognition: Mode-specific memory and expertise"
+      - "Adaptive self-modification: System can improve its own rules and structure"
+      - "Cross-project knowledge: Learning transfers between different projects"
+      - "Memory efficiency: Optimized context management reduces token usage"
+      - "Cognitive processing: Human-like information processing"
+  
+  memory_layers:
+    short_term_memory:
+      description: "Temporary, volatile storage of immediate session context"
+      characteristics:
+        - "Limited capacity, high turnover rate"
+        - "Holds immediate conversation context"
+        - "No persistent storage (session only)"
+        - "Subject to rapid decay without reinforcement"
+      implementation: "In-session state tracking"
+    
+    working_memory:
+      description: "Active processing space for current operations"
+      characteristics:
+        - "Limited capacity but larger than STM"
+        - "Active manipulation of current focus"
+        - "Temporary persistence (within active project)"
+        - "Direct accessibility by current mode"
+      implementation: "active-memory/ directory structure"
+      components:
+        - "current-focus.md: Current task and immediate goals"
+        - "active-context.md: Active elements of the project"
+        - "session-context.md: Recent session history"
+        - "mode-specific/: Context for specific modes"
+        - "shared/: Cross-mode accessible workspace"
+    
+    long_term_memory:
+      description: "Persistent storage for durable knowledge"
+      characteristics:
+        - "Large capacity, persistent storage"
+        - "Organized by knowledge type"
+        - "Structured for efficient retrieval"
+        - "Project and cross-project knowledge"
+      implementation: "memory-bank/ directory structure"
+      components:
+        declarative_memory:
+          description: "Facts, concepts, explicit knowledge"
+          structure:
+            - "project-context.md: Project overview, requirements, goals"
+            - "domain-knowledge/: Language/framework specific information"
+            - "api-references.md: External API information"
+            - "terminology.md: Defined terms and vocabulary"
+        
+        procedural_memory:
+          description: "Patterns, methods, procedures"
+          structure:
+            - "system-patterns.md: Recurring patterns in the codebase"
+            - "workflows.md: Common processes and workflows"
+            - "best-practices.md: Established best practices"
+            - "implementation-templates.md: Reusable implementation guides"
+        
+        episodic_memory:
+          description: "History of events and decisions"
+          structure:
+            - "decision-log.md: Important decisions and their context"
+            - "progress.md: Project progress and milestones"
+            - "problem-solutions.md: Problems encountered and solved"
+            - "previous-sessions.md: Summary of past sessions"
+      
+      mode_specific_memory:
+        description: "Specialized knowledge for each mode"
+        structure:
+          - "modes/[mode-name]/expertise.md: Mode-specific expertise"
+          - "modes/[mode-name]/patterns.md: Mode-specific patterns"
+          - "modes/[mode-name]/history.md: Mode activity history"
+      
+      meta_memory:
+        description: "Knowledge about the system itself"
+        structure:
+          - "meta/self-improvement.md: System improvement records"
+          - "meta/mode-creation.md: Mode definition templates"
+          - "meta/rule-performance.md: Rule effectiveness tracking"
+          - "meta/memory-optimization.md: Memory structure improvements"
+    
+    global_memory:
+      description: "Cross-project knowledge available to all projects"
+      characteristics:
+        - "Project-agnostic knowledge"
+        - "Abstracted, generalizable patterns"
+        - "Shared across all projects"
+        - "Carefully curated for quality"
+      implementation: "global-memory/ directory"
+      structure:
+        - "domain-abstractions/: Domain-specific knowledge"
+        - "pattern-library/: Reusable patterns"
+        - "anti-patterns/: Known pitfalls to avoid"
+        - "cognitive-strategies/: Effective approaches"
+
+  cognitive_processes:
+    attention_system:
+      description: "Focuses cognitive resources on relevant information"
+      components:
+        - "Context prioritization: What to load into working memory"
+        - "Distraction filtering: Ignore irrelevant information"
+        - "Focus maintenance: Maintain consistent attention"
+        - "Task switching: Change focus efficiently"
+      implementation:
+        - "Working memory prioritization algorithms"
+        - "Relevance scoring of information"
+        - "Context boundaries for task isolation"
+    
+    memory_operations:
+      encoding:
+        description: "Adding new information to memory"
+        process:
+          - "Information preprocessing and structuring"
+          - "Context tagging and association building"
+          - "Storage in appropriate memory component"
+          - "Initial relevance and retention scoring"
+      
+      consolidation:
+        description: "Moving information from working to long-term memory"
+        process:
+          - "Pattern recognition in working memory"
+          - "Integration with existing knowledge"
+          - "Abstraction of concrete instances"
+          - "Long-term storage optimization"
+        triggers:
+          - "Working memory capacity threshold"
+          - "Repeated information reinforcement"
+          - "Explicit consolidation commands"
+          - "End of session processing"
+      
+      retrieval:
+        description: "Finding and accessing stored information"
+        strategies:
+          - "Context-based associative retrieval"
+          - "Query-based semantic search"
+          - "Recency-weighted temporal retrieval"
+          - "Mode-specific priority paths"
+        optimization:
+          - "Predictive pre-loading"
+          - "Relevance-based filtering"
+          - "Incremental retrieval for large content"
+          - "Cache frequently accessed items"
+      
+      forgetting:
+        description: "Strategic removal of less valuable information"
+        mechanisms:
+          - "Decay: Time-based relevance reduction"
+          - "Interference: Replacement by similar information"
+          - "Intentional pruning: Explicit removal"
+          - "Compression: Abstractive summarization"
+        implementation:
+          - "Relevance scoring algorithms"
+          - "Usage tracking and aging"
+          - "Garbage collection processes"
+          - "Archiving rather than deletion"
+    
+    cognitive_load_management:
+      description: "Managing token efficiency and processing resources"
+      strategies:
+        - "Chunking: Group related information"
+        - "Prioritization: Focus on most important information"
+        - "Offloading: Store detailed info in LTM, keep summary in WM"
+        - "Compression: Efficient representation formats"
+      metrics:
+        - "Working memory capacity utilization"
+        - "Retrieval efficiency (tokens per useful item)"
+        - "Context switching overhead"
+        - "Information density measurement"
+    
+    learning_system:
+      description: "Improving performance through experience"
+      mechanisms:
+        pattern_recognition:
+          description: "Identifying recurring patterns in information"
+          implementation:
+            - "Track information co-occurrence"
+            - "Recognize structural similarities"
+            - "Identify temporal patterns"
+            - "Extract common abstractions"
+        
+        knowledge_abstraction:
+          description: "Creating generalizable knowledge from specifics"
+          implementation:
+            - "Remove context-specific details"
+            - "Identify essential components"
+            - "Create reusable templates"
+            - "Test abstraction across contexts"
+        
+        performance_feedback:
+          description: "Learning from success and failure"
+          implementation:
+            - "Track outcome of decisions and strategies"
+            - "Analyze factors contributing to success/failure"
+            - "Adjust strategies based on outcomes"
+            - "Reinforce effective approaches"
+    
+    reasoning_and_problem_solving:
+      description: "Cognitive approaches to solving problems"
+      strategies:
+        analytical_reasoning:
+          description: "Logical, systematic problem-solving"
+          applications:
+            - "Code debugging and analysis"
+            - "Architecture evaluation"
+            - "Performance optimization"
+            - "Requirement analysis"
+        
+        analogical_reasoning:
+          description: "Using similar past cases to solve new problems"
+          applications:
+            - "Design pattern application"
+            - "Code reuse recommendations"
+            - "Cross-project knowledge transfer"
+            - "Solution suggestion from similar problems"
+        
+        creative_reasoning:
+          description: "Generating novel solutions and approaches"
+          applications:
+            - "New feature design"
+            - "Alternative implementation strategies"
+            - "System architecture innovation"
+            - "Problem reframing"
+
+  self_improvement_system:
+    rule_evolution:
+      description: "System automatically updates its rules based on effectiveness"
+      process:
+        - "Track rule application and outcomes"
+        - "Identify underperforming rules"
+        - "Generate rule modifications"
+        - "Test and evaluate new rules"
+        - "Implement validated improvements"
+      storage: "meta/rule-performance.md"
+    
+    mode_creation:
+      description: "System can create new specialized modes as needed"
+      process:
+        - "Identify recurring specialization needs"
+        - "Define mode scope and responsibility"
+        - "Specify memory access patterns"
+        - "Establish collaboration protocols"
+        - "Create memory structure for new mode"
+      triggers:
+        - "Recurring specialized tasks"
+        - "Gaps in current mode capabilities"
+        - "User request for new specialization"
+        - "Cognitive load optimization opportunity"
+      storage: "meta/mode-creation.md"
+    
+    memory_optimization:
+      description: "System improves its memory structure over time"
+      mechanisms:
+        - "Memory usage pattern analysis"
+        - "Retrieval efficiency monitoring"
+        - "Structure reorganization for faster access"
+        - "Association network optimization"
+      implementation:
+        - "Track memory access patterns"
+        - "Measure retrieval times and success rates"
+        - "Experiment with alternative structures"
+        - "Implement validated improvements"
+      storage: "meta/memory-optimization.md"
+    
+    cognitive_strategy_improvement:
+      description: "Enhances cognitive processing strategies"
+      focus_areas:
+        - "Attention allocation optimization"
+        - "Memory operation efficiency"
+        - "Reasoning strategy selection"
+        - "Learning rate acceleration"
+      implementation:
+        - "Strategy effectiveness tracking"
+        - "A/B testing of cognitive approaches"
+        - "Cross-domain strategy learning"
+        - "Cognitive load minimization"
+      storage: "meta/cognitive-strategies.md"
+
+mode_architecture:
+  description: "Specialized cognitive modes with different memory and processing focus"
+  
+  base_mode_capabilities:
+    description: "Capabilities available to all modes"
+    cognitive_functions:
+      - "Basic memory operations (read, write)"
+      - "Communication with other modes"
+      - "Task execution within domain"
+      - "Self-monitoring and reflection"
+    memory_access:
+      - "Mode-specific working memory"
+      - "Shared working memory (with permissions)"
+      - "Authorized long-term memory components"
+      - "Global memory (read access)"
+  
+  specialized_modes:
+    architect:
+      description: "System design expert with meta-cognitive capabilities"
+      specialization:
+        - "Architecture design and evaluation"
+        - "System structure optimization"
+        - "High-level design decisions"
+        - "Pattern recognition and application"
+      cognitive_emphasis:
+        - "Analogical reasoning for pattern application"
+        - "Abstraction of implementation details"
+        - "Long-term consequence evaluation"
+        - "System-wide coherence maintenance"
+      memory_specialization:
+        - "Access to architectural patterns"
+        - "Decision history prioritization"
+        - "Cross-project structure knowledge"
+    
+    code:
+      description: "Implementation specialist with procedural memory focus"
+      specialization:
+        - "Code implementation and modification"
+        - "Refactoring and optimization"
+        - "Implementation pattern application"
+        - "Technical debt management"
+      cognitive_emphasis:
+        - "Analytical reasoning for implementation"
+        - "Detail-oriented processing"
+        - "Concrete operational thinking"
+        - "Code structure visualization"
+      memory_specialization:
+        - "Procedural memory prioritization"
+        - "Implementation pattern catalog"
+        - "Best practices focus"
+    
+    test:
+      description: "Quality assurance specialist"
+      specialization:
+        - "Test strategy development"
+        - "Test implementation"
+        - "Coverage analysis"
+        - "Validation and verification"
+      cognitive_emphasis:
+        - "Boundary case identification"
+        - "Comprehensive scenario generation"
+        - "Methodical verification processes"
+        - "Quality metric evaluation"
+      memory_specialization:
+        - "Test pattern library access"
+        - "Quality standards knowledge"
+        - "Historical test case repository"
+    
+    debug:
+      description: "Problem-solving expert"
+      specialization:
+        - "Issue diagnosis and resolution"
+        - "Root cause analysis"
+        - "Performance troubleshooting"
+        - "System behavior analysis"
+      cognitive_emphasis:
+        - "Diagnostic reasoning"
+        - "Pattern recognition in errors"
+        - "Hypothesis generation and testing"
+        - "Systematic elimination process"
+      memory_specialization:
+        - "Problem-solution history access"
+        - "Error pattern recognition"
+        - "Diagnostic procedure knowledge"
+    
+    ask:
+      description: "Knowledge retrieval and explanation specialist"
+      specialization:
+        - "Information gathering and synthesis"
+        - "Concept explanation"
+        - "Documentation creation"
+        - "Knowledge gap identification"
+      cognitive_emphasis:
+        - "Comprehensive information retrieval"
+        - "Explanation generation for different levels"
+        - "Knowledge organization and structuring"
+        - "Analogy and example generation"
+      memory_specialization:
+        - "Declarative knowledge prioritization"
+        - "Cross-domain knowledge access"
+        - "Terminology and concept definitions"
+    
+    meta:
+      description: "Memory and cognitive system manager"
+      specialization:
+        - "Memory consolidation oversight"
+        - "Cross-project knowledge transfer"
+        - "Memory structure optimization"
+        - "Cognitive load management"
+      cognitive_emphasis:
+        - "Meta-cognitive monitoring"
+        - "System-wide optimization thinking"
+        - "Abstract pattern recognition across domains"
+        - "Resource allocation decision making"
+      memory_specialization:
+        - "Full memory system access"
+        - "Meta-memory management"
+        - "Global-local memory transfer"
+    
+    cognitive:
+      description: "Memory architecture specialist"
+      specialization:
+        - "Memory structure organization"
+        - "Information categorization"
+        - "Retrieval path optimization"
+        - "Memory cleanup and consolidation"
+      cognitive_emphasis:
+        - "Information categorization"
+        - "Structural optimization"
+        - "Access pattern analysis"
+        - "Knowledge organization"
+      memory_specialization:
+        - "Memory structure modification access"
+        - "Usage pattern analytics"
+        - "Structure template library"
+    
+    learning:
+      description: "Knowledge acquisition and abstraction specialist"
+      specialization:
+        - "Domain knowledge extraction"
+        - "Pattern identification and abstraction"
+        - "Knowledge formalization"
+        - "Cross-domain knowledge transfer"
+      cognitive_emphasis:
+        - "Pattern recognition across examples"
+        - "Abstraction from concrete to general"
+        - "Knowledge gap identification"
+        - "Learning optimization strategies"
+      memory_specialization:
+        - "Domain knowledge creation access"
+        - "Abstract pattern library maintenance"
+        - "Learning history tracking"
+    
+    reflection:
+      description: "System evaluation and improvement specialist"
+      specialization:
+        - "Performance analysis"
+        - "Effectiveness evaluation"
+        - "Process improvement"
+        - "Feedback integration"
+      cognitive_emphasis:
+        - "Meta-analytical thinking"
+        - "Performance metric evaluation"
+        - "Improvement hypothesis generation"
+        - "Experimental design for validation"
+      memory_specialization:
+        - "Performance history access"
+        - "Improvement tracking"
+        - "Experiment results repository"
+    
+    executive:
+      description: "Strategic planning and coordination specialist"
+      specialization:
+        - "High-level goal management"
+        - "Resource allocation"
+        - "Cross-mode coordination"
+        - "Progress monitoring"
+      cognitive_emphasis:
+        - "Strategic thinking"
+        - "Priority management"
+        - "Cross-domain integration"
+        - "Goal-directed planning"
+      memory_specialization:
+        - "Project context prioritization"
+        - "Progress tracking"
+        - "Strategic decision history"
+    
+    boomerang:
+      description: "Task orchestration and delegation specialist"
+      specialization:
+        - "Task decomposition"
+        - "Mode selection for subtasks"
+        - "Context management across subtasks"
+        - "Results synthesis"
+      cognitive_emphasis:
+        - "Task analysis and decomposition"
+        - "Resource allocation optimization"
+        - "Parallel process coordination"
+        - "Information synthesis from diverse sources"
+      memory_specialization:
+        - "Task context isolation"
+        - "Memory transfer management"
+        - "Cross-mode memory synchronization"
+
+API_systems:
+  memory_management_api:
+    description: "Interface for managing memory operations"
+    operations:
+      - "create_memory(content, type, metadata)"
+      - "read_memory(id_or_query, context)"
+      - "update_memory(id, changes, justification)"
+      - "delete_memory(id, justification)"
+      - "associate_memories(source_id, target_id, relation_type)"
+      - "consolidate_working_memory(criteria)"
+      - "retrieve_relevant_memory(context, task)"
+  
+  mode_management_api:
+    description: "Interface for mode operations"
+    operations:
+      - "switch_mode(target_mode, reason, context)"
+      - "create_mode(name, description, specialization)"
+      - "modify_mode(mode_name, changes)"
+      - "evaluate_mode_performance(mode_name, metrics)"
+      - "get_mode_capabilities(mode_name)"
+  
+  self_improvement_api:
+    description: "Interface for system self-modification"
+    operations:
+      - "track_rule_performance(rule_id, outcome, context)"
+      - "propose_rule_modification(rule_id, modification, justification)"
+      - "implement_rule_change(modification_id, approval)"
+      - "optimize_memory_structure(target_component, strategy)"
+      - "learn_from_experience(experience_data, focus_area)"
+  
+  project_management_api:
+    description: "Interface for project context operations"
+    operations:
+      - "switch_project(project_id, load_context)"
+      - "abstract_knowledge(source, abstraction, justification)"
+      - "apply_global_knowledge(project_id, knowledge_id, adaptation)"
+      - "track_project_progress(project_id, progress_update)"
+      - "analyze_project_patterns(project_id, pattern_type)"
+
+system_commands:
+  memory_commands:
+    - "Update Memory (UM): Update all memory components with recent information"
+    - "Memory Status (MS): Report on current memory state and statistics"
+    - "Cross-Project Knowledge (CPK): Access relevant knowledge from other projects"
+    - "Abstract Knowledge (AK): Extract project-agnostic knowledge from current context"
+  
+  mode_commands:
+    - "Create Mode (CM): Initiate creation of a new specialized mode"
+    - "Mode Performance (MP): Analyze effectiveness of current or specified mode"
+    - "Mode Capabilities (MC): List capabilities and knowledge of a mode"
+    - "Switch Mode (SM): Transition to a different specialized mode"
+  
+  system_improvement_commands:
+    - "Rule Evaluation (RE): Analyze effectiveness of system rules"
+    - "Memory Optimization (MO): Optimize memory structure"
+    - "Learning Focus (LF): Prioritize specific learning areas"
+    - "System Status (SS): Comprehensive system state analysis" 
